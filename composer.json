@@ -1,0 +1,38 @@
+{
+  "name": "rewsam/simple-boilerplating",
+  "description": "Helper to boilerplate routine code templates like CRUDs or migrations",
+  "minimum-stability": "stable",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Andrew Samchuk",
+      "email": "email@example.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Rewsam\\SimpleBoilerplating\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Rewsam\\SimpleBoilerplating\\Tests\\": "tests"
+    }
+  },
+  "require": {
+    "php": "^7.3.0",
+    "mustache/mustache": "^2.13",
+    "symfony/validator": "^3.4 | ^4.4"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-latest",
+    "phpunit/phpunit": "^9",
+    "phpspec/prophecy-phpunit": "^2.0"
+  },
+  "scripts": {
+    "test": [
+      "@php ./vendor/phpunit/phpunit/phpunit"
+    ]
+  }
+}
