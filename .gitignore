@@ -3,3 +3,7 @@ composer.lock
 /vendor
 .idea
 .idea/*
+/public/*
+/public
+/html/
+/html/*
