@@ -2,6 +2,8 @@
 
 namespace Rewsam\SimpleBoilerplating;
 
+use Rewsam\SimpleBoilerplating\Input\InputParameterDefinition;
+
 class ArrayInputParameterCollectorStrategy implements InputParameterCollectorStrategy
 {
     /**

@@ -2,6 +2,11 @@
 
 namespace Rewsam\SimpleBoilerplating;
 
+use Rewsam\SimpleBoilerplating\Input\Input;
+use Rewsam\SimpleBoilerplating\Input\InputOperator;
+use Rewsam\SimpleBoilerplating\Input\InputReactor;
+use Rewsam\SimpleBoilerplating\Input\InputReactorComposite;
+use Rewsam\SimpleBoilerplating\Input\Inputs;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Validator\Validation;
@@ -26,9 +31,13 @@ class TemplatingBuilder
      */
     private $definitions;
     /**
-     * @var InputParameterDefinitions
+     * @var Inputs
      */
     private $parameters;
+    /**
+     * @var InputReactor
+     */
+    private $reactor;
     /**
      * @var Writer
      */
@@ -57,7 +66,8 @@ class TemplatingBuilder
     public function __construct()
     {
         $this->definitions = new TemplateDefinitions();
-        $this->parameters = new InputParameterDefinitions();
+        $this->parameters = Inputs::create();
+        $this->reactor = new InputReactorComposite();
     }
 
     public function setApplicationBasePath(string $applicationBasePath): self
@@ -83,7 +93,6 @@ class TemplatingBuilder
 
     public function addTemplateDefinitions(TemplateDefinitions $definitions): self
     {
-        /** @var TemplateDefinition $definition */
         foreach ($definitions as $definition) {
             $this->definitions->addTemplate($definition->getSourcePath(), $definition->getDestinationPath(), $definition->getMode());
         }
@@ -91,11 +100,16 @@ class TemplatingBuilder
         return $this;
     }
 
-    public function addInputParameterDefinitions(InputParameterDefinitions $parameters): self
+    public function addInputOperator(InputOperator $inputOperator): self
     {
-        foreach ($parameters as $parameter) {
-            $this->parameters->add($parameter);
-        }
+        $this->parameters = $this->parameters->add(new Input($inputOperator, $inputOperator));
+
+        return $this;
+    }
+
+    public function addInputReactor(InputReactor $reactor): self
+    {
+        $this->reactor->add($reactor);
 
         return $this;
     }
@@ -173,7 +187,12 @@ class TemplatingBuilder
         return $this->definitions;
     }
 
-    public function getParameters(): InputParameterDefinitions
+    public function getReactor(): InputReactor
+    {
+        return $this->reactor;
+    }
+
+    public function getParameters(): Inputs
     {
         return $this->parameters;
     }

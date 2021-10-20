@@ -2,6 +2,7 @@
 
 namespace Rewsam\SimpleBoilerplating;
 
+use Rewsam\SimpleBoilerplating\Input\InputParameterDefinition;
 use Symfony\Component\Console\Helper\QuestionHelper;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -47,7 +48,7 @@ class ConsoleInputParameterCollectorStrategy implements InputParameterCollectorS
         $question = new Question(sprintf('Please define %s: ', $definition->getDescription()));
 
         $value = $this->questionHelper->ask($this->input, $this->output, $question);
-        $validationResult = $this->validation->validate($value, $definition->getConstraints());
+        $validationResult = $this->validation->validate($value, $definition->getConstraints()->toArray());
 
         if (count($validationResult) === 0) {
             return (string) $value;

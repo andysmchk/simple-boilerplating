@@ -1,10 +1,10 @@
 <?php
 
-namespace Rewsam\SimpleBoilerplating;
+namespace Rewsam\SimpleBoilerplating\Input;
 
 use Symfony\Component\Validator\Constraint;
 
-class InputParameterDefinition
+class DefaultInputParameterDefinition implements InputParameterDefinition
 {
     /**
      * @var string
@@ -15,7 +15,7 @@ class InputParameterDefinition
      */
     private $description;
     /**
-     * @var Constraint
+     * @var Constraints
      */
     private $constraint;
 
@@ -23,7 +23,7 @@ class InputParameterDefinition
     {
         $this->key = $key;
         $this->description = $description;
-        $this->constraint = $constraint;
+        $this->constraint = Constraints::create(...$constraint);
     }
 
     public function getKey(): string
@@ -36,7 +36,7 @@ class InputParameterDefinition
         return $this->description;
     }
 
-    public function getConstraints(): array
+    public function getConstraints(): Constraints
     {
         return $this->constraint;
     }

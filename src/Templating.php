@@ -17,12 +17,14 @@ class Templating
     public function run(): void
     {
         $strategy = $this->builder->getCollectorStrategy();
-        $inputCollector = new InputParameterCollector($strategy);
+        $reactor = $this->builder->getReactor();
+        $inputCollector = new StrategyInputParameterCollector($strategy);
+        $inputCollector = new ReactorInputParameterCollectorDecorator($inputCollector, $reactor);
         $parameters = $this->builder->getParameters();
-        $bag = $inputCollector->collect($parameters);
+        $bags = $inputCollector->collect($parameters);
 
         $driver = $this->builder->getDriver();
-        $render = new ParametrisedRender($driver, $bag);
+        $render = new ParametrisedRender($driver, $bags->toSingle());
 
         $factory = new TemplateFactory($render);
         $builder = new TemplateBuilderComposite();

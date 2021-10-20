@@ -24,14 +24,14 @@ class MustacheRenderAdapter implements RenderAdapter
     {
         $tpl = $this->getEngine(new Mustache_Loader_FilesystemLoader($this->baseDir))->loadTemplate($path);
 
-        return $tpl->render($parametersBag->getAll());
+        return $tpl->render($parametersBag->all());
     }
 
     public function renderString(string $template, ParametersBag $parametersBag): string
     {
         $mustache = $this->getEngine(new Mustache_Loader_StringLoader());
 
-        return $mustache->render($template, $parametersBag->getAll());
+        return $mustache->render($template, $parametersBag->all());
     }
 
     private function getEngine(Mustache_Loader $loader): Mustache_Engine

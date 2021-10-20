@@ -2,24 +2,17 @@
 
 namespace Rewsam\SimpleBoilerplating;
 
-use InvalidArgumentException;
-
-final class ParametersBag
+interface ParametersBag
 {
-    private $store = [];
+    /** @param $value mixed */
+    public function set(string $key, $value): void;
 
-    /** @param $value int|float|string|bool */
-    public function add(string $key, $value): void
-    {
-        if (!is_scalar($value)) {
-            throw new InvalidArgumentException('Value is not a scalar, something went wrong');
-        }
+    public function all(): array;
 
-        $this->store[$key] = $value;
-    }
+    /** @return mixed */
+    public function get(string $key);
 
-    public function getAll(): array
-    {
-        return $this->store;
-    }
+    public function has(string $key): bool;
+
+    public function merge(ParametersBag $bag): void;
 }
