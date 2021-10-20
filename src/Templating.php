@@ -4,6 +4,9 @@ namespace Rewsam\SimpleBoilerplating;
 
 use Rewsam\SimpleBoilerplating\Collector\ReactorInputParameterCollectorDecorator;
 use Rewsam\SimpleBoilerplating\Collector\StrategyInputParameterCollector;
+use Rewsam\SimpleBoilerplating\Template\FromDefinitionsTemplateBuilder;
+use Rewsam\SimpleBoilerplating\Template\TemplateBuilderComposite;
+use Rewsam\SimpleBoilerplating\TemplatingBuilder;
 
 class Templating
 {

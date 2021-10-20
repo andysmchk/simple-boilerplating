@@ -2,6 +2,11 @@
 
 namespace Rewsam\SimpleBoilerplating;
 
+use Rewsam\SimpleBoilerplating\Template\AppendTemplate;
+use Rewsam\SimpleBoilerplating\Template\DumpTemplate;
+use Rewsam\SimpleBoilerplating\Template\Template;
+use Rewsam\SimpleBoilerplating\Template\TemplateDefinition;
+
 class TemplateFactory
 {
     /**

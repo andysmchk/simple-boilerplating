@@ -2,6 +2,7 @@
 
 namespace Rewsam\SimpleBoilerplating;
 
+use Rewsam\SimpleBoilerplating\Template\Template;
 use Rewsam\SimpleBoilerplating\Writer\Writer;
 
 class TemplateWriter

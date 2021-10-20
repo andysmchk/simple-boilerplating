@@ -3,7 +3,7 @@
 namespace Rewsam\SimpleBoilerplating\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
-use Rewsam\SimpleBoilerplating\TemplateDefinition;
+use Rewsam\SimpleBoilerplating\Template\TemplateDefinition;
 
 class TemplateDefinitionTest extends TestCase
 {

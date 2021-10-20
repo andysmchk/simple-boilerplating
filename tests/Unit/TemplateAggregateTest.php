@@ -4,8 +4,8 @@ namespace Rewsam\SimpleBoilerplating\Tests\Unit;
 
 use Prophecy\PhpUnit\ProphecyTrait;
 use PHPUnit\Framework\TestCase;
-use Rewsam\SimpleBoilerplating\Template;
-use Rewsam\SimpleBoilerplating\TemplateAggregate;
+use Rewsam\SimpleBoilerplating\Template\Template;
+use Rewsam\SimpleBoilerplating\Template\TemplateAggregate;
 use Rewsam\SimpleBoilerplating\Writer\Writer;
 
 class TemplateAggregateTest extends TestCase

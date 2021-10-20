@@ -4,8 +4,8 @@ namespace Rewsam\SimpleBoilerplating\Tests\Unit;
 
 use Prophecy\PhpUnit\ProphecyTrait;
 use PHPUnit\Framework\TestCase;
-use Rewsam\SimpleBoilerplating\AppendTemplate;
-use Rewsam\SimpleBoilerplating\DumpTemplate;
+use Rewsam\SimpleBoilerplating\Template\AppendTemplate;
+use Rewsam\SimpleBoilerplating\Template\DumpTemplate;
 use Rewsam\SimpleBoilerplating\Writer\Writer;
 
 class TemplateTest extends TestCase

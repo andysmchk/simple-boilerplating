@@ -1,6 +1,9 @@
 <?php
 
-namespace Rewsam\SimpleBoilerplating;
+namespace Rewsam\SimpleBoilerplating\Template;
+
+use Rewsam\SimpleBoilerplating\Template\TemplateDefinitions;
+use Rewsam\SimpleBoilerplating\TemplateFactory;
 
 class FromDefinitionsTemplateBuilder implements TemplateBuilder
 {
