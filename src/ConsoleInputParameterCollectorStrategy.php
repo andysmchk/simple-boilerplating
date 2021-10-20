@@ -48,7 +48,7 @@ class ConsoleInputParameterCollectorStrategy implements InputParameterCollectorS
         $question = new Question(sprintf('Please define %s: ', $definition->getDescription()));
 
         $value = $this->questionHelper->ask($this->input, $this->output, $question);
-        $validationResult = $this->validation->validate($value, $definition->getConstraints()->toArray());
+        $validationResult = $this->validation->validate($value, iterator_to_array($definition->getConstraints()));
 
         if (count($validationResult) === 0) {
             return (string) $value;

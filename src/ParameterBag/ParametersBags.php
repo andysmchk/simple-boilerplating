@@ -2,8 +2,7 @@
 
 namespace Rewsam\SimpleBoilerplating\ParameterBag;
 
-use Rewsam\SimpleBoilerplating\ParameterBag\DefaultParametersBag;
-use Rewsam\SimpleBoilerplating\GenericCollection;
+use Rewsam\SimpleBoilerplating\Collection\GenericCollection;
 
 class ParametersBags extends GenericCollection
 {

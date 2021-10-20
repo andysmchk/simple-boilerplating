@@ -1,14 +1,13 @@
 <?php
 
-namespace Rewsam\SimpleBoilerplating;
+namespace Rewsam\SimpleBoilerplating\Collection;
 
 use Iterator;
-use IteratorAggregate;
 
 /**
  * @template T
  */
-abstract class GenericImmutableCollection implements IteratorAggregate
+abstract class GenericImmutableCollection implements Collection
 {
     /** @var T[] */
     private $values;
@@ -26,21 +25,6 @@ abstract class GenericImmutableCollection implements IteratorAggregate
     final protected function merge(array $values): GenericImmutableCollection
     {
         return new static(...array_merge($this->values, $values));
-    }
-
-    /**
-     * @param GenericImmutableCollection<T> $collection
-     * @return GenericImmutableCollection<T>
-     */
-    final protected function mergeCollection(GenericImmutableCollection $collection): GenericImmutableCollection
-    {
-        return $this->merge($collection->toArray());
-    }
-
-    /** @return T[] */
-    final public function toArray(): array
-    {
-        return $this->values;
     }
 
     /** @return Iterator|T[] */

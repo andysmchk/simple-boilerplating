@@ -2,7 +2,7 @@
 
 namespace Rewsam\SimpleBoilerplating\Input;
 
-use Rewsam\SimpleBoilerplating\GenericImmutableCollection;
+use Rewsam\SimpleBoilerplating\Collection\GenericImmutableCollection;
 
 /**
  * @extends GenericImmutableCollection<Input>

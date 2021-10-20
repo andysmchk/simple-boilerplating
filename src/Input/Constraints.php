@@ -2,11 +2,11 @@
 
 namespace Rewsam\SimpleBoilerplating\Input;
 
-use Rewsam\SimpleBoilerplating\GenericImmutableCollection;
+use Rewsam\SimpleBoilerplating\Collection\GenericImmutableCollection;
 use Symfony\Component\Validator\Constraint;
 
 /**
- * @extends GenericImmutableCollection<Constraint>
+ * @extends \Rewsam\SimpleBoilerplating\Collection\GenericImmutableCollection<Constraint>
  */
 class Constraints extends GenericImmutableCollection
 {
