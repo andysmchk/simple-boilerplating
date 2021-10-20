@@ -2,6 +2,7 @@
 
 namespace Rewsam\SimpleBoilerplating;
 
+use Rewsam\SimpleBoilerplating\Render\Render;
 use Rewsam\SimpleBoilerplating\Template\AppendTemplate;
 use Rewsam\SimpleBoilerplating\Template\DumpTemplate;
 use Rewsam\SimpleBoilerplating\Template\Template;
@@ -10,11 +11,11 @@ use Rewsam\SimpleBoilerplating\Template\TemplateDefinition;
 class TemplateFactory
 {
     /**
-     * @var ParametrisedRender
+     * @var Render
      */
     private $render;
 
-    public function __construct(ParametrisedRender $render)
+    public function __construct(Render $render)
     {
         $this->render = $render;
     }

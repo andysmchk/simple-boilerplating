@@ -1,6 +1,6 @@
 <?php
 
-namespace Rewsam\SimpleBoilerplating;
+namespace Rewsam\SimpleBoilerplating\Render;
 
 use Rewsam\SimpleBoilerplating\ParameterBag\ParametersBag;
 

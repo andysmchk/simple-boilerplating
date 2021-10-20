@@ -1,6 +1,6 @@
 <?php
 
-namespace Rewsam\SimpleBoilerplating;
+namespace Rewsam\SimpleBoilerplating\Render;
 
 use Mustache_Engine;
 use Mustache_Loader;

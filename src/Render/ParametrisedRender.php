@@ -1,10 +1,10 @@
 <?php
 
-namespace Rewsam\SimpleBoilerplating;
+namespace Rewsam\SimpleBoilerplating\Render;
 
 use Rewsam\SimpleBoilerplating\ParameterBag\ParametersBag;
 
-final class ParametrisedRender
+final class ParametrisedRender implements Render
 {
     /**
      * @var RenderAdapter

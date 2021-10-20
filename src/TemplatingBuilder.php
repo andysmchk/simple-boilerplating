@@ -10,6 +10,8 @@ use Rewsam\SimpleBoilerplating\Input\InputOperator;
 use Rewsam\SimpleBoilerplating\Input\InputReactor;
 use Rewsam\SimpleBoilerplating\Input\InputReactorComposite;
 use Rewsam\SimpleBoilerplating\Input\Inputs;
+use Rewsam\SimpleBoilerplating\Render\MustacheRenderAdapter;
+use Rewsam\SimpleBoilerplating\Render\RenderAdapter;
 use Rewsam\SimpleBoilerplating\Template\TemplateDefinitions;
 use Rewsam\SimpleBoilerplating\Writer\ConsoleOutputWriterDecorator;
 use Rewsam\SimpleBoilerplating\Writer\DefaultWriter;
