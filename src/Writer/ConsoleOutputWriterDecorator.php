@@ -1,6 +1,6 @@
 <?php
 
-namespace Rewsam\SimpleBoilerplating;
+namespace Rewsam\SimpleBoilerplating\Writer;
 
 use Symfony\Component\Console\Output\OutputInterface;
 

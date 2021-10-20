@@ -1,6 +1,6 @@
 <?php
 
-namespace Rewsam\SimpleBoilerplating;
+namespace Rewsam\SimpleBoilerplating\Writer;
 
 use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemException;

@@ -2,6 +2,8 @@
 
 namespace Rewsam\SimpleBoilerplating;
 
+use Rewsam\SimpleBoilerplating\Writer\Writer;
+
 class DumpTemplate extends AbstractTemplate
 {
     public const TYPE = 'dump';

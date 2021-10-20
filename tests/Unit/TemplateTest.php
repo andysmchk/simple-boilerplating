@@ -6,7 +6,7 @@ use Prophecy\PhpUnit\ProphecyTrait;
 use PHPUnit\Framework\TestCase;
 use Rewsam\SimpleBoilerplating\AppendTemplate;
 use Rewsam\SimpleBoilerplating\DumpTemplate;
-use Rewsam\SimpleBoilerplating\Writer;
+use Rewsam\SimpleBoilerplating\Writer\Writer;
 
 class TemplateTest extends TestCase
 {

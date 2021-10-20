@@ -2,6 +2,8 @@
 
 namespace Rewsam\SimpleBoilerplating;
 
+use Rewsam\SimpleBoilerplating\Writer\Writer;
+
 class AppendTemplate extends AbstractTemplate
 {
     public const TYPE = 'append';

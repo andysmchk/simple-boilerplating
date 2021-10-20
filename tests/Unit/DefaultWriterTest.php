@@ -6,14 +6,14 @@ use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
 use Prophecy\PhpUnit\ProphecyTrait;
 use Prophecy\Prophecy\ObjectProphecy;
-use Rewsam\SimpleBoilerplating\DefaultWriter;
-use Rewsam\SimpleBoilerplating\WriterAdapter;
+use Rewsam\SimpleBoilerplating\Writer\DefaultWriter;
+use Rewsam\SimpleBoilerplating\Writer\WriterAdapter;
 
 class DefaultWriterTest extends TestCase
 {
     use ProphecyTrait;
 
-    /** @var WriterAdapter|ObjectProphecy */
+    /** @var \Rewsam\SimpleBoilerplating\Writer\WriterAdapter|ObjectProphecy */
     private $filesystem;
 
     public function setUp(): void
