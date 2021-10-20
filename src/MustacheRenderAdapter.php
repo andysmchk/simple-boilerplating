@@ -7,6 +7,7 @@ use Mustache_Loader;
 use Mustache_Loader_FilesystemLoader;
 use Mustache_Loader_StringLoader;
 use Mustache_Logger_StreamLogger;
+use Rewsam\SimpleBoilerplating\ParameterBag\ParametersBag;
 
 class MustacheRenderAdapter implements RenderAdapter
 {

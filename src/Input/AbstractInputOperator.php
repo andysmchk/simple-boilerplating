@@ -2,8 +2,8 @@
 
 namespace Rewsam\SimpleBoilerplating\Input;
 
-use Rewsam\SimpleBoilerplating\DefaultParametersBag;
-use Rewsam\SimpleBoilerplating\ParametersBag;
+use Rewsam\SimpleBoilerplating\ParameterBag\DefaultParametersBag;
+use Rewsam\SimpleBoilerplating\ParameterBag\ParametersBag;
 
 abstract class AbstractInputOperator implements InputOperator
 {

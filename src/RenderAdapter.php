@@ -2,6 +2,8 @@
 
 namespace Rewsam\SimpleBoilerplating;
 
+use Rewsam\SimpleBoilerplating\ParameterBag\ParametersBag;
+
 interface RenderAdapter
 {
     public function renderTemplate(string $path, ParametersBag $parametersBag): string;

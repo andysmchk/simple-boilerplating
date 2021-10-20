@@ -2,6 +2,8 @@
 
 namespace Rewsam\SimpleBoilerplating;
 
+use Rewsam\SimpleBoilerplating\ParameterBag\ParametersBag;
+
 final class ParametrisedRender
 {
     /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace Rewsam\SimpleBoilerplating;
+namespace Rewsam\SimpleBoilerplating\ParameterBag;
 
 class AbstractParametersBag implements ParametersBag
 {

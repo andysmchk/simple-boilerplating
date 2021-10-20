@@ -1,6 +1,6 @@
 <?php
 
-namespace Rewsam\SimpleBoilerplating;
+namespace Rewsam\SimpleBoilerplating\ParameterBag;
 
 abstract class AbstractParametersBagDecorator implements ParametersBag
 {

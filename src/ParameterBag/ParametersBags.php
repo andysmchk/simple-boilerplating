@@ -1,6 +1,9 @@
 <?php
 
-namespace Rewsam\SimpleBoilerplating;
+namespace Rewsam\SimpleBoilerplating\ParameterBag;
+
+use Rewsam\SimpleBoilerplating\ParameterBag\DefaultParametersBag;
+use Rewsam\SimpleBoilerplating\GenericCollection;
 
 class ParametersBags extends GenericCollection
 {

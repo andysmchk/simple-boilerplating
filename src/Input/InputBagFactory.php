@@ -2,7 +2,7 @@
 
 namespace Rewsam\SimpleBoilerplating\Input;
 
-use Rewsam\SimpleBoilerplating\ParametersBag;
+use Rewsam\SimpleBoilerplating\ParameterBag\ParametersBag;
 
 interface InputBagFactory
 {
