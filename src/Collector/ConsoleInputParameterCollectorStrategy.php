@@ -1,6 +1,6 @@
 <?php
 
-namespace Rewsam\SimpleBoilerplating;
+namespace Rewsam\SimpleBoilerplating\Collector;
 
 use Rewsam\SimpleBoilerplating\Input\InputParameterDefinition;
 use Symfony\Component\Console\Helper\QuestionHelper;

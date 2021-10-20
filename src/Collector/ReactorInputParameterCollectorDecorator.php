@@ -1,6 +1,6 @@
 <?php
 
-namespace Rewsam\SimpleBoilerplating;
+namespace Rewsam\SimpleBoilerplating\Collector;
 
 use Rewsam\SimpleBoilerplating\Input\InputReactor;
 use Rewsam\SimpleBoilerplating\Input\Inputs;

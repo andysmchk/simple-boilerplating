@@ -2,6 +2,9 @@
 
 namespace Rewsam\SimpleBoilerplating;
 
+use Rewsam\SimpleBoilerplating\Collector\ArrayInputParameterCollectorStrategy;
+use Rewsam\SimpleBoilerplating\Collector\ConsoleInputParameterCollectorStrategy;
+use Rewsam\SimpleBoilerplating\Collector\InputParameterCollectorStrategy;
 use Rewsam\SimpleBoilerplating\Input\Input;
 use Rewsam\SimpleBoilerplating\Input\InputOperator;
 use Rewsam\SimpleBoilerplating\Input\InputReactor;

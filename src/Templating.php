@@ -2,6 +2,9 @@
 
 namespace Rewsam\SimpleBoilerplating;
 
+use Rewsam\SimpleBoilerplating\Collector\ReactorInputParameterCollectorDecorator;
+use Rewsam\SimpleBoilerplating\Collector\StrategyInputParameterCollector;
+
 class Templating
 {
     /**
