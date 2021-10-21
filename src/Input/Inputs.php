@@ -9,13 +9,8 @@ use Rewsam\SimpleBoilerplating\Collection\GenericImmutableCollection;
  */
 final class Inputs extends GenericImmutableCollection
 {
-    public static function create(Input ...$input): Inputs
+    public function add(Input ...$input): self
     {
-        return (new Inputs())->merge($input);
-    }
-
-    public function add(Input ...$input): Inputs
-    {
-        return $this->merge($input);
+        return $this->merge($input, new self());
     }
 }

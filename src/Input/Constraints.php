@@ -6,12 +6,12 @@ use Rewsam\SimpleBoilerplating\Collection\GenericImmutableCollection;
 use Symfony\Component\Validator\Constraint;
 
 /**
- * @extends \Rewsam\SimpleBoilerplating\Collection\GenericImmutableCollection<Constraint>
+ * @extends GenericImmutableCollection
  */
 class Constraints extends GenericImmutableCollection
 {
-    public static function create(Constraint ...$input): Constraints
+    public function __construct(Constraint ...$constraint)
     {
-        return (new Constraints())->merge($input);
+        $this->merge($constraint, $this);
     }
 }

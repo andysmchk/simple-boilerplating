@@ -10,21 +10,18 @@ use Iterator;
 abstract class GenericImmutableCollection implements Collection
 {
     /** @var T[] */
-    private $values;
-
-    /** @param T[] $values */
-    final protected function __construct(...$values)
-    {
-        $this->values = $values;
-    }
+    private $values = [];
 
     /**
      * @param T[] $values
+     * @param GenericImmutableCollection<T> $new
      * @return GenericImmutableCollection<T>
      */
-    final protected function merge(array $values): GenericImmutableCollection
+    final protected function merge(array $values, GenericImmutableCollection $new): self
     {
-        return new static(...array_merge($this->values, $values));
+        $new->values = array_merge($this->values, $values);
+
+        return $new;
     }
 
     /** @return Iterator|T[] */

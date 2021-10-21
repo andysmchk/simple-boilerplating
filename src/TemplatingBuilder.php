@@ -101,7 +101,7 @@ class TemplatingBuilder
     public function __construct()
     {
         $this->definitions = new TemplateDefinitions();
-        $this->parameters = Inputs::create();
+        $this->parameters = new Inputs();
         $this->reactor = new InputReactorComposite();
         $this->builderComposite = new TemplateBuilderComposite();
         $this->templateDefinitionsBuilder = new TemplateDefinitionsBuilderComposite();
