@@ -4,6 +4,7 @@ namespace Rewsam\SimpleBoilerplating\Template;
 
 use Rewsam\SimpleBoilerplating\ParameterBag\ParametersBag;
 use Rewsam\SimpleBoilerplating\Render\RenderAdapter;
+use Rewsam\SimpleBoilerplating\TemplateDefinition\TemplateDefinition;
 
 final class TemplateFactory
 {

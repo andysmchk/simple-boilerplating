@@ -1,6 +1,6 @@
 <?php
 
-namespace Rewsam\SimpleBoilerplating\Template;
+namespace Rewsam\SimpleBoilerplating\TemplateDefinition;
 
 use Rewsam\SimpleBoilerplating\Collection\GenericCollection;
 

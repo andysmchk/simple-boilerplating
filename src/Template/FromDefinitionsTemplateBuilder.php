@@ -3,6 +3,7 @@
 namespace Rewsam\SimpleBoilerplating\Template;
 
 use Rewsam\SimpleBoilerplating\ParameterBag\ParametersBag;
+use Rewsam\SimpleBoilerplating\TemplateDefinition\TemplateDefinitions;
 
 class FromDefinitionsTemplateBuilder implements TemplateBuilder
 {

@@ -1,6 +1,8 @@
 <?php
 
-namespace Rewsam\SimpleBoilerplating\Template;
+namespace Rewsam\SimpleBoilerplating\TemplateDefinition;
+
+use Rewsam\SimpleBoilerplating\Template\PathPrefixer;
 
 class BasePathTemplateDefinitionFactory implements TemplateDefinitionFactory
 {

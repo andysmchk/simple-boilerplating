@@ -3,7 +3,9 @@
 namespace Rewsam\SimpleBoilerplating\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
-use Rewsam\SimpleBoilerplating\Template\TemplateDefinition;
+use Rewsam\SimpleBoilerplating\Template\AppendTemplate;
+use Rewsam\SimpleBoilerplating\Template\DumpTemplate;
+use Rewsam\SimpleBoilerplating\TemplateDefinition\TemplateDefinition;
 
 class TemplateDefinitionTest extends TestCase
 {
@@ -21,18 +23,11 @@ class TemplateDefinitionTest extends TestCase
         self::assertSame($mode, $definition->getMode());
     }
 
-    public function testWrongMode(): void
-    {
-        $this->expectException(\InvalidArgumentException::class);
-
-        new TemplateDefinition('dest', 'source', 'boop');
-    }
-
     public function modeProvider(): array
     {
         return [
-            [TemplateDefinition::SAVE_MODE_APPEND],
-            [TemplateDefinition::SAVE_MODE_DUMP],
+            [AppendTemplate::TYPE],
+            [DumpTemplate::TYPE],
         ];
     }
 }

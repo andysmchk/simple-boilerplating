@@ -18,9 +18,9 @@ use Rewsam\SimpleBoilerplating\Render\RenderAdapter;
 use Rewsam\SimpleBoilerplating\Template\FromDefinitionsTemplateBuilder;
 use Rewsam\SimpleBoilerplating\Template\TemplateBuilder;
 use Rewsam\SimpleBoilerplating\Template\TemplateBuilderComposite;
-use Rewsam\SimpleBoilerplating\Template\TemplateDefinitions;
-use Rewsam\SimpleBoilerplating\Template\TemplateDefinitionsBuilder;
-use Rewsam\SimpleBoilerplating\Template\TemplateDefinitionsBuilderComposite;
+use Rewsam\SimpleBoilerplating\TemplateDefinition\TemplateDefinitions;
+use Rewsam\SimpleBoilerplating\TemplateDefinition\TemplateDefinitionsBuilder;
+use Rewsam\SimpleBoilerplating\TemplateDefinition\TemplateDefinitionsBuilderComposite;
 use Rewsam\SimpleBoilerplating\Template\TemplateFactory;
 use Rewsam\SimpleBoilerplating\Template\TemplateTypeFactoryRegistry;
 use Rewsam\SimpleBoilerplating\Writer\ConsoleOutputWriterDecorator;
@@ -46,7 +46,7 @@ class TemplatingBuilder
      */
     private $output;
     /**
-     * @var TemplateDefinitions
+     * @var \Rewsam\SimpleBoilerplating\TemplateDefinition\TemplateDefinitions
      */
     private $definitions;
     /**
