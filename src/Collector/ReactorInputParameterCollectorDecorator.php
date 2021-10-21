@@ -23,9 +23,9 @@ class ReactorInputParameterCollectorDecorator implements InputParameterCollector
         $this->reactor = $reactor;
     }
 
-    public function collect(Inputs $inputs): ParametersBags
+    public function collect(): ParametersBags
     {
-        $bags = $this->collector->collect($inputs);
+        $bags = $this->collector->collect();
 
         foreach ($bags as $bag) {
             if ($this->reactor->supports($bag)) {

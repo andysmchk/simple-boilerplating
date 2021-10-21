@@ -2,8 +2,7 @@
 
 namespace Rewsam\SimpleBoilerplating\Template;
 
-use Rewsam\SimpleBoilerplating\Template\TemplateDefinitions;
-use Rewsam\SimpleBoilerplating\TemplateFactory;
+use Rewsam\SimpleBoilerplating\ParameterBag\ParametersBag;
 
 class FromDefinitionsTemplateBuilder implements TemplateBuilder
 {
@@ -22,15 +21,14 @@ class FromDefinitionsTemplateBuilder implements TemplateBuilder
         $this->definitions = $definitions;
     }
 
-    public function build(): Template
+    public function build(ParametersBag $bag): Template
     {
         $aggregate = new TemplateAggregate();
 
         foreach ($this->definitions as $item) {
-            $aggregate->add($this->factory->create($item));
+            $aggregate->add($this->factory->create($item, $bag));
         }
 
         return $aggregate;
-
     }
 }

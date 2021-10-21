@@ -2,17 +2,19 @@
 
 namespace Rewsam\SimpleBoilerplating\Template;
 
+use Rewsam\SimpleBoilerplating\ParameterBag\ParametersBag;
+
 class TemplateBuilderComposite implements TemplateBuilder
 {
     /** @var TemplateBuilder[]  */
     private $builders = [];
 
-    public function build(): Template
+    public function build(ParametersBag $bag): Template
     {
         $template = new TemplateAggregate();
 
         foreach ($this->builders as $builder) {
-            $template->add($builder->build());
+            $template->add($builder->build($bag));
         }
 
         return $template;

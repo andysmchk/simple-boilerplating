@@ -4,7 +4,10 @@ namespace Rewsam\SimpleBoilerplating;
 
 use Rewsam\SimpleBoilerplating\Collector\ArrayInputParameterCollectorStrategy;
 use Rewsam\SimpleBoilerplating\Collector\ConsoleInputParameterCollectorStrategy;
+use Rewsam\SimpleBoilerplating\Collector\InputParameterCollector;
 use Rewsam\SimpleBoilerplating\Collector\InputParameterCollectorStrategy;
+use Rewsam\SimpleBoilerplating\Collector\ReactorInputParameterCollectorDecorator;
+use Rewsam\SimpleBoilerplating\Collector\StrategyInputParameterCollector;
 use Rewsam\SimpleBoilerplating\Input\Input;
 use Rewsam\SimpleBoilerplating\Input\InputOperator;
 use Rewsam\SimpleBoilerplating\Input\InputReactor;
@@ -12,7 +15,14 @@ use Rewsam\SimpleBoilerplating\Input\InputReactorComposite;
 use Rewsam\SimpleBoilerplating\Input\Inputs;
 use Rewsam\SimpleBoilerplating\Render\MustacheRenderAdapter;
 use Rewsam\SimpleBoilerplating\Render\RenderAdapter;
+use Rewsam\SimpleBoilerplating\Template\FromDefinitionsTemplateBuilder;
+use Rewsam\SimpleBoilerplating\Template\TemplateBuilder;
+use Rewsam\SimpleBoilerplating\Template\TemplateBuilderComposite;
 use Rewsam\SimpleBoilerplating\Template\TemplateDefinitions;
+use Rewsam\SimpleBoilerplating\Template\TemplateDefinitionsBuilder;
+use Rewsam\SimpleBoilerplating\Template\TemplateDefinitionsBuilderComposite;
+use Rewsam\SimpleBoilerplating\Template\TemplateFactory;
+use Rewsam\SimpleBoilerplating\Template\TemplateTypeFactoryRegistry;
 use Rewsam\SimpleBoilerplating\Writer\ConsoleOutputWriterDecorator;
 use Rewsam\SimpleBoilerplating\Writer\DefaultWriter;
 use Rewsam\SimpleBoilerplating\Writer\Writer;
@@ -56,6 +66,18 @@ class TemplatingBuilder
      */
     private $driver;
     /**
+     * @var TemplateTypeFactoryRegistry
+     */
+    private $templateTypeFactoryRegistry;
+    /**
+     * @var TemplateBuilderComposite
+     */
+    private $builderComposite;
+    /**
+     * @var TemplateDefinitionsBuilder
+     */
+    private $templateDefinitionsBuilder;
+    /**
      * @var array
      */
     private $params = [];
@@ -70,18 +92,52 @@ class TemplatingBuilder
     /**
      * @var string
      */
-    private $applicationBasePath = '';
+    private $templatesPath = '';
+    /**
+     * @var string
+     */
+    private $writerBasePath = '';
 
     public function __construct()
     {
         $this->definitions = new TemplateDefinitions();
         $this->parameters = Inputs::create();
         $this->reactor = new InputReactorComposite();
+        $this->builderComposite = new TemplateBuilderComposite();
+        $this->templateDefinitionsBuilder = new TemplateDefinitionsBuilderComposite();
     }
 
-    public function setApplicationBasePath(string $applicationBasePath): self
+    public function setTemplatesBasePath(string $templatesPath): self
     {
-        $this->applicationBasePath = $applicationBasePath;
+        $this->templatesPath = $templatesPath;
+
+        return $this;
+    }
+
+    public function setWriterBasePath(string $writerBasePath): self
+    {
+        $this->writerBasePath = $writerBasePath;
+
+        return $this;
+    }
+
+    public function addTemplateBuilder(TemplateBuilder $builder): self
+    {
+        $this->builderComposite->add($builder);
+
+        return $this;
+    }
+
+    public function addTemplateDefinitionsBuilder(TemplateDefinitionsBuilder $builder): self
+    {
+        $this->templateDefinitionsBuilder->addBuilder($builder);
+
+        return $this;
+    }
+
+    public function setTemplateTypeFactoryRegistry(TemplateTypeFactoryRegistry $templateTypeFactoryRegistry): self
+    {
+        $this->templateTypeFactoryRegistry = $templateTypeFactoryRegistry;
 
         return $this;
     }
@@ -102,9 +158,7 @@ class TemplatingBuilder
 
     public function addTemplateDefinitions(TemplateDefinitions $definitions): self
     {
-        foreach ($definitions as $definition) {
-            $this->definitions->addTemplate($definition->getSourcePath(), $definition->getDestinationPath(), $definition->getMode());
-        }
+        $this->definitions->mergeCollection($definitions);
 
         return $this;
     }
@@ -131,9 +185,9 @@ class TemplatingBuilder
         return $this;
     }
 
-    public function setInputParams(array $params): self
+    public function addInputParams(array $params): self
     {
-        $this->params = $params;
+        $this->params = array_merge($this->params, $params);
 
         return $this;
     }
@@ -152,19 +206,45 @@ class TemplatingBuilder
        return $this;
     }
 
-    public function addWriter(Writer $param): self
+    public function setWriter(Writer $param): self
     {
         $this->writer = $param;
 
         return $this;
     }
 
-    public function build(): Templating
+    public function getTemplating(): Templating
     {
-        return new Templating($this);
+        return new Templating(
+            $this->getCollector(),
+            $this->getTemplateWriter(),
+            $this->getTemplateBuilder()
+        );
     }
 
-    public function getCollectorStrategy(): InputParameterCollectorStrategy
+    private function getTemplateWriter(): TemplateWriter
+    {
+        return new TemplateWriter($this->getWriter());
+    }
+
+    private function getCollector(): InputParameterCollector
+    {
+        return new ReactorInputParameterCollectorDecorator(
+            new StrategyInputParameterCollector($this->getCollectorStrategy(), $this->getParameters()),
+            $this->getReactor()
+        );
+    }
+
+    private function getTemplateBuilder(): TemplateBuilder
+    {
+        $factory = new TemplateFactory($this->getDriver(), $this->getTemplateTypeFactoryRegistry());
+        $definitionsBuilder = new FromDefinitionsTemplateBuilder($factory, $this->getDefinitions());
+        $this->builderComposite->add($definitionsBuilder);
+
+        return $this->builderComposite;
+    }
+
+    private function getCollectorStrategy(): InputParameterCollectorStrategy
     {
         if ($this->input && $this->output) {
             $validator = $this->getValidator();
@@ -175,9 +255,9 @@ class TemplatingBuilder
         return new ArrayInputParameterCollectorStrategy($this->params);
     }
 
-    public function getWriter(): Writer
+    private function getWriter(): Writer
     {
-        $writer = $this->writer ?? DefaultWriter::createWithLocalFilesystem($this->applicationBasePath, $this->dryMode, $this->allowOverride);
+        $writer = $this->writer ?? DefaultWriter::createWithLocalFilesystem($this->writerBasePath, $this->dryMode, $this->allowOverride);
 
         if ($this->output) {
             $writer = new ConsoleOutputWriterDecorator($writer, $this->output);
@@ -186,22 +266,31 @@ class TemplatingBuilder
         return $writer;
     }
 
-    public function getDriver(): RenderAdapter
+    private function getTemplateTypeFactoryRegistry(): TemplateTypeFactoryRegistry
     {
-        return $this->driver ?? new MustacheRenderAdapter($this->applicationBasePath);
+        return $this->templateTypeFactoryRegistry ?? new TemplateTypeFactoryRegistry();
     }
 
-    public function getDefinitions(): TemplateDefinitions
+    private function getDriver(): RenderAdapter
     {
-        return $this->definitions;
+        return $this->driver ?? new MustacheRenderAdapter($this->templatesPath);
     }
 
-    public function getReactor(): InputReactor
+    private function getDefinitions(): TemplateDefinitions
+    {
+        $new = new TemplateDefinitions();
+        $new->mergeCollection($this->definitions);
+        $new->mergeCollection($this->templateDefinitionsBuilder->build());
+
+        return $new;
+    }
+
+    private function getReactor(): InputReactor
     {
         return $this->reactor;
     }
 
-    public function getParameters(): Inputs
+    private function getParameters(): Inputs
     {
         return $this->parameters;
     }

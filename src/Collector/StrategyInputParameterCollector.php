@@ -12,17 +12,22 @@ class StrategyInputParameterCollector implements InputParameterCollector
      * @var InputParameterCollectorStrategy
      */
     private $parameterCollectorStrategy;
+    /**
+     * @var Inputs
+     */
+    private $inputs;
 
-    public function __construct(InputParameterCollectorStrategy $parameterCollectorStrategy)
+    public function __construct(InputParameterCollectorStrategy $parameterCollectorStrategy, Inputs $inputs)
     {
         $this->parameterCollectorStrategy = $parameterCollectorStrategy;
+        $this->inputs = $inputs;
     }
 
-    public function collect(Inputs $inputs): ParametersBags
+    public function collect(): ParametersBags
     {
         $bags = new ParametersBags();
 
-        foreach ($inputs as $input) {
+        foreach ($this->inputs as $input) {
             $requirement = $input->getInputRequirement();
             $definitions = new InputParameterDefinitions();
             $requirement->describe($definitions);

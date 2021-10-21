@@ -7,5 +7,5 @@ use Rewsam\SimpleBoilerplating\ParameterBag\ParametersBags;
 
 interface InputParameterCollector
 {
-    public function collect(Inputs $inputs): ParametersBags;
+    public function collect(): ParametersBags;
 }
