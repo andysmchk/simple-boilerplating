@@ -2,6 +2,9 @@
 
 namespace Rewsam\SimpleBoilerplating\Template;
 
+/**
+ * @codeCoverageIgnore
+ */
 abstract class AbstractTemplate implements Template
 {
     /**

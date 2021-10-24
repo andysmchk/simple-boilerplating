@@ -23,7 +23,7 @@ class DefaultInputParameterDefinition implements InputParameterDefinition
     {
         $this->key = $key;
         $this->description = $description;
-        $this->constraint = Constraints::create(...$constraint);
+        $this->constraint = new Constraints(...$constraint);
     }
 
     public function getKey(): string

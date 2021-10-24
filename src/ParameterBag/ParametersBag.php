@@ -2,6 +2,9 @@
 
 namespace Rewsam\SimpleBoilerplating\ParameterBag;
 
+/**
+ * @codeCoverageIgnore
+ */
 interface ParametersBag
 {
     /** @param $value mixed */

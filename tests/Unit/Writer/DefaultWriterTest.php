@@ -1,6 +1,6 @@
 <?php
 
-namespace Rewsam\SimpleBoilerplating\Tests\Unit;
+namespace Rewsam\SimpleBoilerplating\Tests\Unit\Writer;
 
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
@@ -9,6 +9,7 @@ use Prophecy\Prophecy\ObjectProphecy;
 use Rewsam\SimpleBoilerplating\Writer\DefaultWriter;
 use Rewsam\SimpleBoilerplating\Writer\WriterAdapter;
 
+/** @covers \Rewsam\SimpleBoilerplating\Writer\DefaultWriter  */
 class DefaultWriterTest extends TestCase
 {
     use ProphecyTrait;
@@ -142,3 +143,4 @@ class DefaultWriterTest extends TestCase
         }
     }
 }
+

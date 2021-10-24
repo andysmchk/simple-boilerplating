@@ -4,6 +4,9 @@ namespace Rewsam\SimpleBoilerplating\Render;
 
 use Rewsam\SimpleBoilerplating\ParameterBag\ParametersBag;
 
+/**
+ * @codeCoverageIgnore
+ */
 interface RenderAdapter
 {
     public function renderTemplate(string $path, ParametersBag $parametersBag): string;

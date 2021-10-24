@@ -2,12 +2,15 @@
 
 namespace Rewsam\SimpleBoilerplating;
 
+use InvalidArgumentException;
 use Rewsam\SimpleBoilerplating\Collector\ArrayInputParameterCollectorStrategy;
-use Rewsam\SimpleBoilerplating\Collector\ConsoleInputParameterCollectorStrategy;
+use Rewsam\SimpleBoilerplating\Collector\SymfonyConsoleQuestionHelperAdapter;
+use Rewsam\SimpleBoilerplating\Collector\QuestionInputParameterCollectorStrategy;
 use Rewsam\SimpleBoilerplating\Collector\InputParameterCollector;
 use Rewsam\SimpleBoilerplating\Collector\InputParameterCollectorStrategy;
 use Rewsam\SimpleBoilerplating\Collector\ReactorInputParameterCollectorDecorator;
 use Rewsam\SimpleBoilerplating\Collector\StrategyInputParameterCollector;
+use Rewsam\SimpleBoilerplating\Collector\SymfonySimpleValidatorAdapter;
 use Rewsam\SimpleBoilerplating\Input\Input;
 use Rewsam\SimpleBoilerplating\Input\InputOperator;
 use Rewsam\SimpleBoilerplating\Input\InputReactor;
@@ -15,17 +18,19 @@ use Rewsam\SimpleBoilerplating\Input\InputReactorComposite;
 use Rewsam\SimpleBoilerplating\Input\Inputs;
 use Rewsam\SimpleBoilerplating\Render\MustacheRenderAdapter;
 use Rewsam\SimpleBoilerplating\Render\RenderAdapter;
+use Rewsam\SimpleBoilerplating\Template\DefaultTemplateFactory;
+use Rewsam\SimpleBoilerplating\Template\FromDefinitionsBuilderTemplateBuilder;
 use Rewsam\SimpleBoilerplating\Template\FromDefinitionsTemplateBuilder;
 use Rewsam\SimpleBoilerplating\Template\TemplateBuilder;
 use Rewsam\SimpleBoilerplating\Template\TemplateBuilderComposite;
 use Rewsam\SimpleBoilerplating\TemplateDefinition\TemplateDefinitions;
 use Rewsam\SimpleBoilerplating\TemplateDefinition\TemplateDefinitionsBuilder;
 use Rewsam\SimpleBoilerplating\TemplateDefinition\TemplateDefinitionsBuilderComposite;
-use Rewsam\SimpleBoilerplating\Template\TemplateFactory;
 use Rewsam\SimpleBoilerplating\Template\TemplateTypeFactoryRegistry;
-use Rewsam\SimpleBoilerplating\Writer\ConsoleOutputWriterDecorator;
+use Rewsam\SimpleBoilerplating\Writer\SymfonyConsoleOutputWriterDecorator;
 use Rewsam\SimpleBoilerplating\Writer\DefaultWriter;
 use Rewsam\SimpleBoilerplating\Writer\Writer;
+use Symfony\Component\Console\Helper\QuestionHelper;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Validator\Validation;
@@ -46,7 +51,7 @@ class TemplatingBuilder
      */
     private $output;
     /**
-     * @var \Rewsam\SimpleBoilerplating\TemplateDefinition\TemplateDefinitions
+     * @var TemplateDefinitions
      */
     private $definitions;
     /**
@@ -92,11 +97,11 @@ class TemplatingBuilder
     /**
      * @var string
      */
-    private $templatesPath = '';
+    private $templatesPath;
     /**
      * @var string
      */
-    private $writerBasePath = '';
+    private $writerBasePath;
 
     public function __construct()
     {
@@ -215,6 +220,8 @@ class TemplatingBuilder
 
     public function getTemplating(): Templating
     {
+        $this->validate();
+
         return new Templating(
             $this->getCollector(),
             $this->getTemplateWriter(),
@@ -237,9 +244,14 @@ class TemplatingBuilder
 
     private function getTemplateBuilder(): TemplateBuilder
     {
-        $factory = new TemplateFactory($this->getDriver(), $this->getTemplateTypeFactoryRegistry());
-        $definitionsBuilder = new FromDefinitionsTemplateBuilder($factory, $this->getDefinitions());
-        $this->builderComposite->add($definitionsBuilder);
+        $factory = new DefaultTemplateFactory($this->getDriver(), $this->getTemplateTypeFactoryRegistry());
+        $this->builderComposite->add(
+            new FromDefinitionsTemplateBuilder($factory, $this->getDefinitions()),
+        );
+
+        $this->builderComposite->add(
+            new FromDefinitionsBuilderTemplateBuilder($factory, $this->templateDefinitionsBuilder),
+        );
 
         return $this->builderComposite;
     }
@@ -248,8 +260,9 @@ class TemplatingBuilder
     {
         if ($this->input && $this->output) {
             $validator = $this->getValidator();
+            $adapter = new SymfonyConsoleQuestionHelperAdapter(new QuestionHelper(), $this->input, $this->output);
 
-            return new ConsoleInputParameterCollectorStrategy($this->input, $this->output, $validator);
+            return new QuestionInputParameterCollectorStrategy($adapter, new SymfonySimpleValidatorAdapter($validator));
         }
 
         return new ArrayInputParameterCollectorStrategy($this->params);
@@ -260,7 +273,7 @@ class TemplatingBuilder
         $writer = $this->writer ?? DefaultWriter::createWithLocalFilesystem($this->writerBasePath, $this->dryMode, $this->allowOverride);
 
         if ($this->output) {
-            $writer = new ConsoleOutputWriterDecorator($writer, $this->output);
+            $writer = new SymfonyConsoleOutputWriterDecorator($writer, $this->output);
         }
 
         return $writer;
@@ -278,11 +291,7 @@ class TemplatingBuilder
 
     private function getDefinitions(): TemplateDefinitions
     {
-        $new = new TemplateDefinitions();
-        $new->mergeCollection($this->definitions);
-        $new->mergeCollection($this->templateDefinitionsBuilder->build());
-
-        return $new;
+        return $this->definitions;
     }
 
     private function getReactor(): InputReactor
@@ -298,5 +307,18 @@ class TemplatingBuilder
     private function getValidator(): ValidatorInterface
     {
         return $this->validator ?? Validation::createValidator();
+    }
+
+    private function validate(): void
+    {
+        if (!$this->writer) {
+            if (!$this->writerBasePath) {
+                throw new InvalidArgumentException('Writer base path is expected');
+            }
+
+            if (!$this->templatesPath) {
+                throw new InvalidArgumentException('Templates path is expected');
+            }
+        }
     }
 }

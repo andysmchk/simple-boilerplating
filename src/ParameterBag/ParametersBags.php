@@ -13,7 +13,7 @@ class ParametersBags extends GenericCollection
 
     public function toSingle(): ParametersBag
     {
-        $bag = new DefaultParametersBag();
+        $bag = new ArrayParametersBag();
 
         foreach ($this->getIterator() as $item) {
             $bag->merge($item);

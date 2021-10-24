@@ -4,7 +4,7 @@ namespace Rewsam\SimpleBoilerplating\Writer;
 
 use Symfony\Component\Console\Output\OutputInterface;
 
-class ConsoleOutputWriterDecorator implements Writer
+class SymfonyConsoleOutputWriterDecorator implements Writer
 {
     /**
      * @var OutputInterface

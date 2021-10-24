@@ -2,17 +2,12 @@
 
 namespace Rewsam\SimpleBoilerplating\ParameterBag;
 
-abstract class AbstractParametersBagDecorator implements ParametersBag
+trait ParametersBagDecoratorTrait
 {
     /**
      * @var ParametersBag
      */
     private $bag;
-
-    public function __construct(ParametersBag $bag)
-    {
-        $this->bag = $bag;
-    }
 
     public function set(string $key, $value): void
     {
@@ -37,5 +32,10 @@ abstract class AbstractParametersBagDecorator implements ParametersBag
     public function merge(ParametersBag $bag): void
     {
         $this->bag->merge($bag);
+    }
+
+    private function setBag(ParametersBag $bag): void
+    {
+        $this->bag = $bag;
     }
 }

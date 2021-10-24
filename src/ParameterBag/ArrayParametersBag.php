@@ -2,7 +2,7 @@
 
 namespace Rewsam\SimpleBoilerplating\ParameterBag;
 
-class AbstractParametersBag implements ParametersBag
+class ArrayParametersBag implements ParametersBag
 {
     private $store = [];
 

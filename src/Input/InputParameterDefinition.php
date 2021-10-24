@@ -2,6 +2,9 @@
 
 namespace Rewsam\SimpleBoilerplating\Input;
 
+/**
+ * @codeCoverageIgnore
+ */
 interface InputParameterDefinition
 {
     public function getKey(): string;

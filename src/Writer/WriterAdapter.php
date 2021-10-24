@@ -2,6 +2,9 @@
 
 namespace Rewsam\SimpleBoilerplating\Writer;
 
+/**
+ * @codeCoverageIgnore
+ */
 interface WriterAdapter
 {
     public function exists(string $destination): bool;

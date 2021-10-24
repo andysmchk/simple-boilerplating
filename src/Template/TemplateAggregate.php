@@ -4,7 +4,7 @@ namespace Rewsam\SimpleBoilerplating\Template;
 
 use Rewsam\SimpleBoilerplating\Writer\Writer;
 
-class TemplateAggregate implements Template
+class   TemplateAggregate implements Template
 {
     /**
      * @var Template[]

@@ -7,6 +7,7 @@ use IteratorAggregate;
 
 /**
  * @template T
+ * @codeCoverageIgnore
  */
 interface Collection extends IteratorAggregate
 {

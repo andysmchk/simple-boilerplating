@@ -4,7 +4,7 @@ namespace Rewsam\SimpleBoilerplating\Template;
 
 use InvalidArgumentException;
 
-final class TemplateTypeFactoryRegistry
+class TemplateTypeFactoryRegistry
 {
     /** @var TemplateTypeFactory[]  */
     private $registry = [];
