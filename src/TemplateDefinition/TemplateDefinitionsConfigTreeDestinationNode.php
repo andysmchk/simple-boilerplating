@@ -10,6 +10,7 @@ final class TemplateDefinitionsConfigTreeDestinationNode
     /** @var array[] */
     private array $filesConfig = [];
 
+    /** @param array<string, mixed> $config */
     public function __construct(array $config)
     {
         $this->destinationBasePath = (string) ($config['destination_directory'] ?? '');

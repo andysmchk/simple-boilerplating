@@ -32,13 +32,7 @@ final class MustacheRenderAdapter implements RenderAdapter
     {
         return new Mustache_Engine(array(
             'loader' => $loader,
-            //'partials_loader' => new Mustache_Loader_FilesystemLoader($this->baseDir . '/partials'),
-            'helpers' => [
-                'i18n' => static function($text) {
-                }],
-            'escape' => function($value) {
-                return htmlspecialchars($value, ENT_COMPAT, 'UTF-8');
-            },
+            'escape' => fn($value): string => htmlspecialchars($value, ENT_COMPAT, 'UTF-8'),
             'charset' => 'ISO-8859-1',
             'logger' => new Mustache_Logger_StreamLogger('php://stderr'),
             'strict_callables' => true,

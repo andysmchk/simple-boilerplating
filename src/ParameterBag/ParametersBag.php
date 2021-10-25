@@ -10,6 +10,9 @@ interface ParametersBag
 {
     public function set(string $key, mixed $value): void;
 
+    /**
+     * @return array<string, mixed>
+     */
     public function all(): array;
 
     public function get(string $key): mixed;

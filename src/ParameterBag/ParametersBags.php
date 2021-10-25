@@ -6,7 +6,7 @@ namespace Rewsam\SimpleBoilerplating\ParameterBag;
 use Rewsam\SimpleBoilerplating\Collection\GenericCollection;
 
 /**
- * @extends ParametersBags<ParametersBag>
+ * @extends GenericCollection<ParametersBag>
  */
 final class ParametersBags extends GenericCollection
 {

@@ -3,15 +3,30 @@ declare(strict_types=1);
 
 namespace Rewsam\SimpleBoilerplating\Input;
 
-use Rewsam\SimpleBoilerplating\Collection\GenericImmutableCollection;
+use IteratorAggregate;
+use Traversable;
 
 /**
- * @extends GenericImmutableCollection<Input>
+ * @implements IteratorAggregate<int, Input>
  */
-final class Inputs extends GenericImmutableCollection
+final class Inputs implements IteratorAggregate
 {
+    /** @var Input[] */
+    private array $values;
+
+    public function __construct(Input ...$input)
+    {
+        $this->values = $input;
+    }
+
     public function add(Input ...$input): self
     {
-        return $this->merge($input, new self());
+        return new self(...array_merge($this->values, $input));
+    }
+
+    /** @return Traversable<int, Input> */
+    public function getIterator(): Traversable
+    {
+        yield from $this->values;
     }
 }

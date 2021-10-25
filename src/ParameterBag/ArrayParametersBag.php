@@ -5,6 +5,9 @@ namespace Rewsam\SimpleBoilerplating\ParameterBag;
 
 final class ArrayParametersBag implements ParametersBag
 {
+    /**
+     * @var array<string, mixed>
+     */
     private array $store = [];
 
     public function set(string $key, mixed $value): void
@@ -12,6 +15,9 @@ final class ArrayParametersBag implements ParametersBag
         $this->store[$key] = $value;
     }
 
+    /**
+     * @inheritDoc
+     */
     public function all(): array
     {
         return $this->store;

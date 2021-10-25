@@ -20,7 +20,7 @@ final class QuestionInputParameterCollectorStrategy implements InputParameterCol
         $question->setValidator(function ($value) use ($definition) {
             $violations = $this->validation->validate($value, $definition->getConstraints());
 
-            if ($error = $violations->getMultilineMessage()) {
+            if (($error = $violations->getMultilineMessage()) !== '' && ($error = $violations->getMultilineMessage()) !== '0') {
                 throw new RuntimeException($error);
             }
 

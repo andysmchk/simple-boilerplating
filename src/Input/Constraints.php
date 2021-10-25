@@ -3,16 +3,26 @@ declare(strict_types=1);
 
 namespace Rewsam\SimpleBoilerplating\Input;
 
-use Rewsam\SimpleBoilerplating\Collection\GenericImmutableCollection;
+use IteratorAggregate;
 use Symfony\Component\Validator\Constraint;
+use Traversable;
 
 /**
- * @extends GenericImmutableCollection<Constraint>
+ * @implements IteratorAggregate<int, Constraint>
  */
-final class Constraints extends GenericImmutableCollection
+final class Constraints implements IteratorAggregate
 {
+    /** @var Constraint[] */
+    private array $values;
+
     public function __construct(Constraint ...$constraint)
     {
-        $this->merge($constraint, $this);
+        $this->values = $constraint;
+    }
+
+    /** @return Traversable<int, Constraint> */
+    public function getIterator(): Traversable
+    {
+        yield from $this->values;
     }
 }

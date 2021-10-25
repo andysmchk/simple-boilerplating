@@ -11,21 +11,22 @@ final class TemplateDefinitionsConfigTreeFileNode
     private string $destination;
     private string $mode;
 
+    /** @param array<string, ?string> $config */
     public function __construct(array $config)
     {
         $this->destination = (string) ($config['destination'] ?? null);
         $this->source = (string) ($config['source'] ?? null);
         $this->mode = (string) ($config['mode'] ?? null);
 
-        if (!$this->destination) {
+        if ($this->destination === '') {
             throw new InvalidArgumentException('Destination file path is required');
         }
 
-        if (!$this->source) {
+        if ($this->source === '') {
             throw new InvalidArgumentException('Source file path is required');
         }
 
-        if (!$this->mode) {
+        if ($this->mode === '') {
             throw new InvalidArgumentException('Template mode is required');
         }
     }

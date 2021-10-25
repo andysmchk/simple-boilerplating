@@ -15,27 +15,17 @@ class ConstraintsTest extends TestCase
 {
     use ProphecyTrait;
 
-    /**
-     * @var Constraint|ObjectProphecy
-     */
-    protected $constraint;
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function setUp(): void
+    public function testCollectionConstruct(): void
     {
-        parent::setUp();
+        $values = [$this->createValue(), $this->createValue()];
 
-        $this->constraint = $this->prophesize(Constraint::class);
+        $stub = new Constraints(...$values);
+
+        self::assertSame($values, iterator_to_array($stub));
     }
 
-    public function test__construct(): void
+    private function createValue(): Constraint
     {
-        $values = [$this->constraint->reveal()];
-
-        $sut = new Constraints(...$values);
-
-        self::assertSame($values, iterator_to_array($sut));
+        return $this->prophesize(Constraint::class)->reveal();
     }
 }

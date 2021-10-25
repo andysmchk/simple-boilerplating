@@ -48,9 +48,10 @@ final class TemplatingBuilder
     private OutputInterface $output;
     private TemplateDefinitions $definitions;
     private Inputs $parameters;
-    private InputReactor $reactor;
+    private InputReactorComposite $reactor;
     private TemplateBuilderComposite $builderComposite;
-    private TemplateDefinitionsBuilder $templateDefinitionsBuilder;
+    private TemplateDefinitionsBuilderComposite $templateDefinitionsBuilder;
+    /** @var mixed[] */
     private array $params = [];
     private bool $dryMode = false;
     private bool $allowOverride = true;
@@ -144,6 +145,9 @@ final class TemplatingBuilder
         return $this;
     }
 
+    /**
+     * @param mixed[] $params
+     */
     public function addInputParams(array $params): self
     {
         $this->params = array_merge($this->params, $params);
@@ -266,11 +270,11 @@ final class TemplatingBuilder
     private function validate(): void
     {
         if (!isset($this->writer)) {
-            if (!isset($this->writerBasePath) || !$this->writerBasePath) {
+            if (isset($this->writerBasePath) && $this->writerBasePath !== '') {
                 throw new InvalidArgumentException('Writer base path is expected');
             }
 
-            if (!isset($this->templatesPath) || !$this->templatesPath) {
+            if (isset($this->templatesPath)&& $this->templatesPath !== '') {
                 throw new InvalidArgumentException('Templates path is expected');
             }
         }

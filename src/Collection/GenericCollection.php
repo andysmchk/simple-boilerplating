@@ -9,19 +9,22 @@ use IteratorAggregate;
 
 /**
  * @template T
+ * @implements IteratorAggregate<int, T>
  */
 abstract class GenericCollection implements IteratorAggregate
 {
     /** @var T[] */
     private array $values = [];
 
-    /** @param T[] $values */
+    /**
+     * @param T[] $values
+     */
     final protected function merge(array $values): void
     {
         $this->values = array_merge($this->values, $values);
     }
 
-    /** @return Iterator|T[] */
+    /** @return Iterator<int, T> */
     final public function getIterator(): Iterator
     {
         return new ArrayIterator($this->values);
