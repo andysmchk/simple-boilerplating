@@ -16,10 +16,7 @@ class TemplateWriterTest extends TestCase
 {
     use ProphecyTrait;
 
-    /**
-     * @var Writer|ObjectProphecy
-     */
-    protected $writer;
+    protected ObjectProphecy $writer;
 
     /**
      * {@inheritdoc}

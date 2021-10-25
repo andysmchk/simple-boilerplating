@@ -16,15 +16,9 @@ class InputTest extends TestCase
 {
     use ProphecyTrait;
 
-    /**
-     * @var InputRequirement|ObjectProphecy
-     */
-    protected $inputRequirement;
+    protected object $inputRequirement;
 
-    /**
-     * @var InputBagFactory|ObjectProphecy
-     */
-    protected $inputBagFactory;
+    protected object $inputBagFactory;
 
     /**
      * {@inheritdoc}

@@ -15,15 +15,9 @@ class RequiredInputParameterDefinitionTest extends TestCase
 {
     use ProphecyTrait;
 
-    /**
-     * @var string
-     */
-    protected $key;
+    protected string $key;
 
-    /**
-     * @var string
-     */
-    protected $description;
+    protected string $description;
 
     /**
      * {@inheritdoc}
@@ -45,7 +39,7 @@ class RequiredInputParameterDefinitionTest extends TestCase
         $expected = [NotNull::class, NotBlank::class];
 
         foreach ($constraints as $constraint) {
-            $position = array_search(get_class($constraint), $expected);
+            $position = array_search($constraint::class, $expected);
 
             if ($position !== false) {
                 unset($expected[$position]);

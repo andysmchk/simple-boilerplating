@@ -55,8 +55,8 @@ final class TemplatingBuilder
     private array $params = [];
     private bool $dryMode = false;
     private bool $allowOverride = true;
-    private string $templatesPath;
-    private string $writerBasePath;
+    private string $templatesPath = '';
+    private string $writerBasePath = '';
 
     public function __construct()
     {
@@ -270,11 +270,11 @@ final class TemplatingBuilder
     private function validate(): void
     {
         if (!isset($this->writer)) {
-            if (isset($this->writerBasePath) && $this->writerBasePath !== '') {
+            if ($this->writerBasePath === '') {
                 throw new InvalidArgumentException('Writer base path is expected');
             }
 
-            if (isset($this->templatesPath)&& $this->templatesPath !== '') {
+            if ($this->templatesPath === '') {
                 throw new InvalidArgumentException('Templates path is expected');
             }
         }

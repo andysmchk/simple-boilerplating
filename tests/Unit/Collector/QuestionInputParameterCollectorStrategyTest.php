@@ -21,15 +21,9 @@ class QuestionInputParameterCollectorStrategyTest extends TestCase
 {
     use ProphecyTrait;
 
-    /**
-     * @var QuestionHelperAdapter|ObjectProphecy
-     */
-    protected $questionHelper;
+    protected ObjectProphecy $questionHelper;
 
-    /**
-     * @var SimpleValidatorAdapter|ObjectProphecy
-     */
-    protected $validation;
+    protected ObjectProphecy $validation;
 
     /**
      * {@inheritdoc}

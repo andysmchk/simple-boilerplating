@@ -2,6 +2,7 @@
 
 namespace Rewsam\SimpleBoilerplating\Tests\Unit;
 
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 use Rewsam\SimpleBoilerplating\Input\InputOperator;
@@ -24,8 +25,7 @@ class TemplatingBuilderTest extends TestCase
 {
     use ProphecyTrait;
 
-    /** @var TemplatingBuilder */
-    private $sut;
+    private TemplatingBuilder $sut;
 
     /**
      * {@inheritdoc}
@@ -41,7 +41,7 @@ class TemplatingBuilderTest extends TestCase
 
     public function testErrorMinimalConfiguration(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $sut = new TemplatingBuilder();
         $sut->getTemplating();
     }

@@ -22,15 +22,9 @@ class FromDefinitionsBuilderTemplateBuilderTest extends TestCase
 {
     use ProphecyTrait;
 
-    /**
-     * @var TemplateFactory|ObjectProphecy
-     */
-    protected $factory;
+    protected ObjectProphecy $factory;
 
-    /**
-     * @var TemplateDefinitionsBuilder|ObjectProphecy
-     */
-    protected $definitions;
+    protected ObjectProphecy $definitions;
 
     /**
      * {@inheritdoc}

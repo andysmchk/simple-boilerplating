@@ -14,8 +14,7 @@ class DefaultWriterTest extends TestCase
 {
     use ProphecyTrait;
 
-    /** @var \Rewsam\SimpleBoilerplating\Writer\WriterAdapter|ObjectProphecy */
-    private $filesystem;
+    private ObjectProphecy $filesystem;
 
     public function setUp(): void
     {

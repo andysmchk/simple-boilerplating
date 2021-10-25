@@ -15,10 +15,7 @@ class ParametersBagDecoratorTraitTest extends TestCase
 {
     use ProphecyTrait;
 
-    /**
-     * @var ParametersBag|ObjectProphecy
-     */
-    private $bag;
+    private ObjectProphecy $bag;
 
     public function setUp(): void
     {

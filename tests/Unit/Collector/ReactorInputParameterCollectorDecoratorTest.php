@@ -18,15 +18,9 @@ class ReactorInputParameterCollectorDecoratorTest extends TestCase
 {
     use ProphecyTrait;
 
-    /**
-     * @var InputParameterCollector|ObjectProphecy
-     */
-    protected $collector;
+    protected ObjectProphecy $collector;
 
-    /**
-     * @var InputReactor|ObjectProphecy
-     */
-    protected $reactor;
+    protected ObjectProphecy $reactor;
 
     /**
      * {@inheritdoc}

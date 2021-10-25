@@ -18,10 +18,7 @@ class SymfonySimpleValidatorAdapterTest extends TestCase
 {
     use ProphecyTrait;
 
-    /**
-     * @var ValidatorInterface|ObjectProphecy
-     */
-    protected $validator;
+    protected ObjectProphecy $validator;
 
     /**
      * {@inheritdoc}

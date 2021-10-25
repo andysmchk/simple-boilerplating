@@ -12,6 +12,6 @@ final class PathPrefixer
 
     public function prefixPath(string $path): string
     {
-        return $this->prefix !== '' ? ($path) : $this->prefix . $this->separator . $path;
+        return $this->prefix === '' ? $path : ($this->prefix . $this->separator . $path);
     }
 }

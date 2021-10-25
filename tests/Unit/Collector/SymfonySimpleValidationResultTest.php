@@ -2,6 +2,8 @@
 
 namespace Rewsam\SimpleBoilerplating\Tests\Unit\Collector;
 
+use ArrayObject;
+use BadMethodCallException;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 use Prophecy\Prophecy\ObjectProphecy;
@@ -29,36 +31,36 @@ class SymfonySimpleValidationResultTest extends TestCase
         $violation->getMessage()->shouldBeCalledOnce()->willReturn('test');
         $violations[] = $violation->reveal();
 
-        $violationList = new class($violations) extends \ArrayObject implements ConstraintViolationListInterface {
+        $violationList = new class($violations) extends ArrayObject implements ConstraintViolationListInterface {
 
             public function add(ConstraintViolationInterface $violation)
             {
-                throw new \BadMethodCallException('Not expected');
+                throw new BadMethodCallException('Not expected');
             }
 
             public function addAll(ConstraintViolationListInterface $otherList)
             {
-                throw new \BadMethodCallException('Not expected');
+                throw new BadMethodCallException('Not expected');
             }
 
             public function get($offset)
             {
-                throw new \BadMethodCallException('Not expected');
+                throw new BadMethodCallException('Not expected');
             }
 
             public function has($offset)
             {
-                throw new \BadMethodCallException('Not expected');
+                throw new BadMethodCallException('Not expected');
             }
 
             public function set($offset, ConstraintViolationInterface $violation)
             {
-                throw new \BadMethodCallException('Not expected');
+                throw new BadMethodCallException('Not expected');
             }
 
             public function remove($offset)
             {
-                throw new \BadMethodCallException('Not expected');
+                throw new BadMethodCallException('Not expected');
             }
         };
 

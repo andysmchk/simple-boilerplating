@@ -15,10 +15,7 @@ class LocalFilesystemWriterAdapterTest extends TestCase
 {
     use ProphecyTrait;
 
-    /**
-     * @var Filesystem|ObjectProphecy
-     */
-    protected $filesystem;
+    protected ObjectProphecy $filesystem;
 
     /**
      * {@inheritdoc}

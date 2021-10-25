@@ -22,20 +22,11 @@ class TemplatingTest extends TestCase
 {
     use ProphecyTrait;
 
-    /**
-     * @var InputParameterCollector|ObjectProphecy
-     */
-    protected $collector;
+    protected ObjectProphecy $collector;
 
-    /**
-     * @var Writer|ObjectProphecy
-     */
-    protected $writer;
+    protected ObjectProphecy $writer;
 
-    /**
-     * @var TemplateBuilder|ObjectProphecy
-     */
-    protected $builder;
+    protected ObjectProphecy $builder;
 
     /**
      * {@inheritdoc}

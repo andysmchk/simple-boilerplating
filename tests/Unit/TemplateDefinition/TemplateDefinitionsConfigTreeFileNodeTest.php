@@ -2,6 +2,7 @@
 
 namespace Rewsam\SimpleBoilerplating\Tests\Unit\TemplateDefinition;
 
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 use Rewsam\SimpleBoilerplating\TemplateDefinition\TemplateDefinitionsConfigTreeFileNode;
@@ -46,7 +47,7 @@ class TemplateDefinitionsConfigTreeFileNodeTest extends TestCase
                     'destination' => 'destination.php',
                     'mode' => 'dump',
                 ],
-                \InvalidArgumentException::class
+                InvalidArgumentException::class
             ],
             [
                 [
@@ -54,7 +55,7 @@ class TemplateDefinitionsConfigTreeFileNodeTest extends TestCase
                     'destination' => '',
                     'mode' => 'dump',
                 ],
-                \InvalidArgumentException::class
+                InvalidArgumentException::class
             ],
             [
                 [
@@ -62,7 +63,7 @@ class TemplateDefinitionsConfigTreeFileNodeTest extends TestCase
                     'destination' => 'destination.php',
                     'mode' => '',
                 ],
-                \InvalidArgumentException::class
+                InvalidArgumentException::class
             ],
         ];
     }

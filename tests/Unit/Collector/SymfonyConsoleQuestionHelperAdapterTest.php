@@ -18,15 +18,9 @@ class SymfonyConsoleQuestionHelperAdapterTest extends TestCase
 {
     use ProphecyTrait;
 
-    /**
-     * @var QuestionHelper|ObjectProphecy
-     */
-    protected $questionHelper;
+    protected ObjectProphecy $questionHelper;
 
-    /**
-     * @var InputInterface|ObjectProphecy
-     */
-    protected $input;
+    protected ObjectProphecy $input;
 
     /**
      * @var OutputInterface|ObjectProphecy

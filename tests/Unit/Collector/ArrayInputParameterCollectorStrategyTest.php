@@ -14,10 +14,7 @@ class ArrayInputParameterCollectorStrategyTest extends TestCase
 {
     use ProphecyTrait;
 
-    /**
-     * @var array
-     */
-    protected $params;
+    protected array $params;
 
     /**
      * {@inheritdoc}

@@ -16,10 +16,7 @@ class SymfonyConsoleOutputWriterDecoratorTest extends TestCase
 {
     use ProphecyTrait;
 
-    /**
-     * @var Writer|ObjectProphecy
-     */
-    protected $subject;
+    protected ObjectProphecy $subject;
 
     /**
      * @var OutputInterface|ObjectProphecy

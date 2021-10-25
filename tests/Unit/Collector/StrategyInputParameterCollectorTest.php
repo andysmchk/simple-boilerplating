@@ -25,10 +25,7 @@ class StrategyInputParameterCollectorTest extends TestCase
 {
     use ProphecyTrait;
 
-    /**
-     * @var InputParameterCollectorStrategy|ObjectProphecy
-     */
-    protected $parameterCollectorStrategy;
+    protected ObjectProphecy $parameterCollectorStrategy;
 
     /**
      * {@inheritdoc}

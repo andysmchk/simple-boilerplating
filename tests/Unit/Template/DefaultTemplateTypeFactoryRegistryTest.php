@@ -2,6 +2,7 @@
 
 namespace Rewsam\SimpleBoilerplating\Tests\Unit\Template;
 
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 use Rewsam\SimpleBoilerplating\Template\AppendTemplate;
@@ -32,7 +33,7 @@ class DefaultTemplateTypeFactoryRegistryTest extends TestCase
 
     public function testGetInvalid(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $sut = new DefaultTemplateTypeFactoryRegistry();
         $sut->get('test');
     }

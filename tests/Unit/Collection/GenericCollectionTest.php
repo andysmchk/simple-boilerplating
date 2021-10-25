@@ -10,8 +10,7 @@ class GenericCollectionTest extends TestCase
 {
     use ProphecyTrait;
 
-    /** @var GenericCollection */
-    private $stub;
+    private GenericCollection $stub;
 
     public function setUp(): void
     {

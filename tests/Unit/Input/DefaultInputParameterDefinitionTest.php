@@ -15,20 +15,11 @@ class DefaultInputParameterDefinitionTest extends TestCase
 {
     use ProphecyTrait;
 
-    /**
-     * @var string
-     */
-    protected $key;
+    protected string $key;
 
-    /**
-     * @var string
-     */
-    protected $description;
+    protected string $description;
 
-    /**
-     * @var Constraint|ObjectProphecy
-     */
-    protected $constraint;
+    protected ObjectProphecy $constraint;
 
     /**
      * {@inheritdoc}

@@ -20,15 +20,9 @@ class DefaultTemplateFactoryTest extends TestCase
 {
     use ProphecyTrait;
 
-    /**
-     * @var RenderAdapter|ObjectProphecy
-     */
-    protected $render;
+    protected ObjectProphecy $render;
 
-    /**
-     * @var TemplateTypeFactoryRegistry|ObjectProphecy
-     */
-    protected $factoryRegistry;
+    protected ObjectProphecy $factoryRegistry;
 
     /**
      * {@inheritdoc}

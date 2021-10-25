@@ -13,10 +13,7 @@ class MustacheRenderAdapterTest extends TestCase
 {
     use ProphecyTrait;
 
-    /**
-     * @var string
-     */
-    protected $baseDir;
+    protected string $baseDir;
 
     /**
      * {@inheritdoc}
@@ -31,18 +28,18 @@ class MustacheRenderAdapterTest extends TestCase
     public function test__construct(): void
     {
         $this->markTestIncomplete();
-        $sut = new MustacheRenderAdapter($this->baseDir);
+        new MustacheRenderAdapter($this->baseDir);
     }
 
     public function testRenderTemplate(): void
     {
         $this->markTestIncomplete();
-        $sut = new MustacheRenderAdapter($this->baseDir);
+        new MustacheRenderAdapter($this->baseDir);
     }
 
     public function testRenderString(): void
     {
         $this->markTestIncomplete();
-        $sut = new MustacheRenderAdapter($this->baseDir);
+        new MustacheRenderAdapter($this->baseDir);
     }
 }
