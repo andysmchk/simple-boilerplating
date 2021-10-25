@@ -7,20 +7,10 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 final class SymfonyConsoleOutputWriterDecorator implements Writer
 {
-    /**
-     * @var OutputInterface
-     */
-    private $output;
-    /**
-     * @var Writer
-     */
-    private $subject;
-
-    public function __construct(Writer $subject, OutputInterface $output)
-    {
-        $this->output = $output;
-        $this->subject = $subject;
-    }
+    public function __construct(
+        private Writer $subject,
+        private OutputInterface $output
+    ) {}
 
     public function exists(string $destination): bool
     {

@@ -8,7 +8,7 @@ use Rewsam\SimpleBoilerplating\ParameterBag\ParametersBag;
 final class InputReactorComposite implements InputReactor
 {
     /** @var InputReactor[]  */
-    private $reactors = [];
+    private array $reactors = [];
 
     public function add(InputReactor $inputReactor): void
     {

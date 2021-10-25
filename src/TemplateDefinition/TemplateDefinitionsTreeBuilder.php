@@ -5,15 +5,7 @@ namespace Rewsam\SimpleBoilerplating\TemplateDefinition;
 
 final class TemplateDefinitionsTreeBuilder implements TemplateDefinitionsBuilder
 {
-    /**
-     * @var array
-     */
-    private $config;
-
-    public function __construct(array $config)
-    {
-        $this->config = $config;
-    }
+    public function __construct(private array $config) {}
 
     public function build(): TemplateDefinitions
     {

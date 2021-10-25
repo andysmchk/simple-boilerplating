@@ -8,25 +8,11 @@ use Rewsam\SimpleBoilerplating\Template\TemplateBuilder;
 
 final class Templating
 {
-    /**
-     * @var InputParameterCollector
-     */
-    private $collector;
-    /**
-     * @var TemplateWriter
-     */
-    private $writer;
-    /**
-     * @var TemplateBuilder
-     */
-    private $builder;
-
-    public function __construct(InputParameterCollector $collector, TemplateWriter $writer, TemplateBuilder $builder)
-    {
-        $this->collector = $collector;
-        $this->writer = $writer;
-        $this->builder = $builder;
-    }
+    public function __construct(
+        private InputParameterCollector $collector,
+        private TemplateWriter $writer,
+        private TemplateBuilder $builder
+    ) {}
 
     public function run(): void
     {

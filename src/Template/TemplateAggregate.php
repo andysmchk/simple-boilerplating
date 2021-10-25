@@ -5,12 +5,12 @@ namespace Rewsam\SimpleBoilerplating\Template;
 
 use Rewsam\SimpleBoilerplating\Writer\Writer;
 
-final class   TemplateAggregate implements Template
+final class TemplateAggregate implements Template
 {
     /**
      * @var Template[]
      */
-    private $templates = [];
+    private array $templates = [];
 
     public function add(Template $template): void
     {

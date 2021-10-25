@@ -13,14 +13,14 @@ use IteratorAggregate;
 abstract class GenericImmutableCollection implements IteratorAggregate
 {
     /** @var T[] */
-    private $values = [];
+    private array $values = [];
 
     /**
      * @param T[] $values
      * @param GenericImmutableCollection<T> $new
      * @return GenericImmutableCollection<T>
      */
-    final protected function merge(array $values, GenericImmutableCollection $new): self
+    final protected function merge(array $values, GenericImmutableCollection $new): static
     {
         $new->values = array_merge($this->values, $values);
 
@@ -28,7 +28,7 @@ abstract class GenericImmutableCollection implements IteratorAggregate
     }
 
     /** @return Iterator|T[] */
-    final public function getIterator()
+    final public function getIterator(): Iterator
     {
         return new ArrayIterator($this->values);
     }

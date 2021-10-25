@@ -7,15 +7,7 @@ use Symfony\Component\Validator\ConstraintViolationListInterface;
 
 final class SymfonySimpleValidationResult implements SimpleValidationResult
 {
-    /**
-     * @var ConstraintViolationListInterface
-     */
-    private $violationList;
-
-    public function __construct(ConstraintViolationListInterface $violationList)
-    {
-        $this->violationList = $violationList;
-    }
+    public function __construct(private ConstraintViolationListInterface $violationList) {}
 
     public function getMultilineMessage(): string
     {

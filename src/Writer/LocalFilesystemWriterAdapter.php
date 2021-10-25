@@ -9,15 +9,7 @@ use League\Flysystem\Local\LocalFilesystemAdapter;
 
 final class LocalFilesystemWriterAdapter implements WriterAdapter
 {
-    /**
-     * @var Filesystem
-     */
-    private $filesystem;
-
-    public function __construct(Filesystem $filesystem)
-    {
-        $this->filesystem = $filesystem;
-    }
+    public function __construct(private Filesystem $filesystem) {}
 
     public static function create(string $basePath): self
     {

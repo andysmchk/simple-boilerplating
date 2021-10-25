@@ -8,7 +8,7 @@ use Rewsam\SimpleBoilerplating\ParameterBag\ParametersBag;
 final class TemplateBuilderComposite implements TemplateBuilder
 {
     /** @var TemplateBuilder[]  */
-    private $builders = [];
+    private array $builders = [];
 
     public function build(ParametersBag $bag): Template
     {

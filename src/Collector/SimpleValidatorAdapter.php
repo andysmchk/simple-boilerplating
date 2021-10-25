@@ -10,6 +10,5 @@ use Rewsam\SimpleBoilerplating\Input\Constraints;
  */
 interface SimpleValidatorAdapter
 {
-    /** @param mixed $value */
-    public function validate($value, Constraints $constraints): SimpleValidationResult;
+    public function validate(mixed $value, Constraints $constraints): SimpleValidationResult;
 }

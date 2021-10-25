@@ -9,20 +9,10 @@ use Rewsam\SimpleBoilerplating\ParameterBag\ParametersBags;
 
 final class StrategyInputParameterCollector implements InputParameterCollector
 {
-    /**
-     * @var InputParameterCollectorStrategy
-     */
-    private $parameterCollectorStrategy;
-    /**
-     * @var Inputs
-     */
-    private $inputs;
-
-    public function __construct(InputParameterCollectorStrategy $parameterCollectorStrategy, Inputs $inputs)
-    {
-        $this->parameterCollectorStrategy = $parameterCollectorStrategy;
-        $this->inputs = $inputs;
-    }
+    public function __construct(
+        private InputParameterCollectorStrategy $parameterCollectorStrategy,
+        private Inputs $inputs
+    ) {}
 
     public function collect(): ParametersBags
     {

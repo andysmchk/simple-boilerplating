@@ -8,15 +8,7 @@ use Rewsam\SimpleBoilerplating\Writer\Writer;
 
 final class TemplateWriter
 {
-    /**
-     * @var Writer
-     */
-    private $writer;
-
-    public function __construct(Writer $writer)
-    {
-        $this->writer = $writer;
-    }
+    public function __construct(private Writer $writer) {}
 
     public function write(Template $template): void
     {

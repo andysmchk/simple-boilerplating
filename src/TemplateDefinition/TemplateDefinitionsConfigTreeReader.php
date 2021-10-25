@@ -5,15 +5,7 @@ namespace Rewsam\SimpleBoilerplating\TemplateDefinition;
 
 final class TemplateDefinitionsConfigTreeReader
 {
-    /**
-     * @var array
-     */
-    private $config;
-
-    public function __construct(array $config)
-    {
-        $this->config = $config;
-    }
+    public function __construct(private array $config) {}
 
     /** @return TemplateDefinitionsConfigTreeDestinationNode[] */
     public function read(): iterable

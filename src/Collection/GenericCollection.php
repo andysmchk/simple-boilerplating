@@ -13,7 +13,7 @@ use IteratorAggregate;
 abstract class GenericCollection implements IteratorAggregate
 {
     /** @var T[] */
-    private $values = [];
+    private array $values = [];
 
     /** @param T[] $values */
     final protected function merge(array $values): void

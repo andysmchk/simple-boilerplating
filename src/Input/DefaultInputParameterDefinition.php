@@ -7,23 +7,10 @@ use Symfony\Component\Validator\Constraint;
 
 final class DefaultInputParameterDefinition implements InputParameterDefinition
 {
-    /**
-     * @var string
-     */
-    private $key;
-    /**
-     * @var string
-     */
-    private $description;
-    /**
-     * @var Constraints
-     */
-    private $constraint;
+    private Constraints $constraint;
 
-    public function __construct(string $key, string $description, Constraint ...$constraint)
+    public function __construct(private string $key, private string $description, Constraint ...$constraint)
     {
-        $this->key = $key;
-        $this->description = $description;
         $this->constraint = new Constraints(...$constraint);
     }
 

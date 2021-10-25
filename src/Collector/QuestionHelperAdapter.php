@@ -10,6 +10,5 @@ use Symfony\Component\Console\Question\Question;
  */
 interface QuestionHelperAdapter
 {
-    /** @return mixed answer */
-    public function ask(Question $question);
+    public function ask(Question $question): mixed;
 }

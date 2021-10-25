@@ -8,19 +8,19 @@ use InvalidArgumentException;
 class DefaultTemplateTypeFactoryRegistry implements TemplateTypeFactoryRegistry
 {
     /** @var TemplateTypeFactory[]  */
-    private $registry = [];
+    private array $registry = [];
 
     public function __construct()
     {
         $this->register(AppendTemplate::TYPE, new class implements TemplateTypeFactory {
-            public function create(string $destinations, string $content): Template
+            public function create(string $destinations, string $content): AppendTemplate
             {
                 return new AppendTemplate($destinations, $content);
             }
         });
 
         $this->register(DumpTemplate::TYPE, new class implements TemplateTypeFactory {
-            public function create(string $destinations, string $content): Template
+            public function create(string $destinations, string $content): DumpTemplate
             {
                 return new DumpTemplate($destinations, $content);
             }

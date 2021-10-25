@@ -10,32 +10,13 @@ use Symfony\Component\Console\Question\Question;
 
 final class SymfonyConsoleQuestionHelperAdapter implements QuestionHelperAdapter
 {
-    /**
-     * @var InputInterface
-     */
-    private $input;
-    /**
-     * @var OutputInterface
-     */
-    private $output;
+    public function __construct(
+        private QuestionHelper  $questionHelper,
+        private InputInterface  $input,
+        private OutputInterface $output
+    ) {}
 
-    /**
-     * @var QuestionHelper
-     */
-    private $questionHelper;
-
-    public function __construct(QuestionHelper $questionHelper, InputInterface $input, OutputInterface $output)
-    {
-        $this->input = $input;
-        $this->output = $output;
-        $this->questionHelper = $questionHelper;
-    }
-
-    /**
-     * @param Question $question
-     * @return mixed answer
-     */
-    public function ask(Question $question)
+    public function ask(Question $question): mixed
     {
         return $this->questionHelper->ask($this->input, $this->output, $question);
     }

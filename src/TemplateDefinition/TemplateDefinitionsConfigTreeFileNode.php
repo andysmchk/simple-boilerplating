@@ -7,20 +7,15 @@ use InvalidArgumentException;
 
 final class TemplateDefinitionsConfigTreeFileNode
 {
-    /** @var string */
-    private $source;
-
-    /** @var string */
-    private $destination;
-
-    /** @var string */
-    private $mode;
+    private string $source;
+    private string $destination;
+    private string $mode;
 
     public function __construct(array $config)
     {
-        $this->destination = $config['destination'] ?? null;
-        $this->source = $config['source'] ?? null;
-        $this->mode = $config['mode'] ?? null;
+        $this->destination = (string) ($config['destination'] ?? null);
+        $this->source = (string) ($config['source'] ?? null);
+        $this->mode = (string) ($config['mode'] ?? null);
 
         if (!$this->destination) {
             throw new InvalidArgumentException('Destination file path is required');

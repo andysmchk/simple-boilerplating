@@ -12,15 +12,7 @@ use Rewsam\SimpleBoilerplating\ParameterBag\ParametersBag;
 
 final class MustacheRenderAdapter implements RenderAdapter
 {
-    /**
-     * @var string
-     */
-    private $baseDir;
-
-    public function __construct(string $baseDir)
-    {
-        $this->baseDir = $baseDir;
-    }
+    public function __construct(private string $baseDir) {}
 
     public function renderTemplate(string $path, ParametersBag $parametersBag): string
     {

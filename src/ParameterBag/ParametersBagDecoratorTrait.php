@@ -5,12 +5,9 @@ namespace Rewsam\SimpleBoilerplating\ParameterBag;
 
 trait ParametersBagDecoratorTrait
 {
-    /**
-     * @var ParametersBag
-     */
-    private $bag;
+    private ParametersBag $bag;
 
-    public function set(string $key, $value): void
+    public function set(string $key, mixed $value): void
     {
         $this->bag->set($key, $value);
     }
@@ -20,7 +17,7 @@ trait ParametersBagDecoratorTrait
         return $this->bag->all();
     }
 
-    public function get(string $key)
+    public function get(string $key): mixed
     {
         return $this->bag->get($key);
     }

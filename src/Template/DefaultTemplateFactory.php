@@ -9,20 +9,10 @@ use Rewsam\SimpleBoilerplating\TemplateDefinition\TemplateDefinition;
 
 final class DefaultTemplateFactory implements TemplateFactory
 {
-    /**
-     * @var RenderAdapter
-     */
-    private $render;
-    /**
-     * @var TemplateTypeFactoryRegistry
-     */
-    private $factoryRegistry;
-
-    public function __construct(RenderAdapter $render, TemplateTypeFactoryRegistry $factoryRegistry)
-    {
-        $this->render = $render;
-        $this->factoryRegistry = $factoryRegistry;
-    }
+    public function __construct(
+        private RenderAdapter $render,
+        private TemplateTypeFactoryRegistry $factoryRegistry
+    ) {}
 
     public function create(TemplateDefinition $definition, ParametersBag $bag): Template
     {

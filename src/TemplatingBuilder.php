@@ -40,70 +40,22 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 final class TemplatingBuilder
 {
-    /**
-     * @var ValidatorInterface
-     */
-    private $validator;
-    /**
-     * @var InputInterface
-     */
-    private $input;
-    /**
-     * @var OutputInterface
-     */
-    private $output;
-    /**
-     * @var TemplateDefinitions
-     */
-    private $definitions;
-    /**
-     * @var Inputs
-     */
-    private $parameters;
-    /**
-     * @var InputReactor
-     */
-    private $reactor;
-    /**
-     * @var Writer
-     */
-    private $writer;
-    /**
-     * @var RenderAdapter
-     */
-    private $driver;
-    /**
-     * @var TemplateTypeFactoryRegistry
-     */
-    private $templateTypeFactoryRegistry;
-    /**
-     * @var TemplateBuilderComposite
-     */
-    private $builderComposite;
-    /**
-     * @var TemplateDefinitionsBuilder
-     */
-    private $templateDefinitionsBuilder;
-    /**
-     * @var array
-     */
-    private $params = [];
-    /**
-     * @var bool
-     */
-    private $dryMode = false;
-    /**
-     * @var bool
-     */
-    private $allowOverride = true;
-    /**
-     * @var string
-     */
-    private $templatesPath;
-    /**
-     * @var string
-     */
-    private $writerBasePath;
+    private ValidatorInterface $validator;
+    private Writer $writer;
+    private RenderAdapter $driver;
+    private TemplateTypeFactoryRegistry $templateTypeFactoryRegistry;
+    private InputInterface $input;
+    private OutputInterface $output;
+    private TemplateDefinitions $definitions;
+    private Inputs $parameters;
+    private InputReactor $reactor;
+    private TemplateBuilderComposite $builderComposite;
+    private TemplateDefinitionsBuilder $templateDefinitionsBuilder;
+    private array $params = [];
+    private bool $dryMode = false;
+    private bool $allowOverride = true;
+    private string $templatesPath;
+    private string $writerBasePath;
 
     public function __construct()
     {
@@ -260,7 +212,7 @@ final class TemplatingBuilder
 
     private function getCollectorStrategy(): InputParameterCollectorStrategy
     {
-        if ($this->input && $this->output) {
+        if (isset($this->input, $this->output)) {
             $validator = $this->getValidator();
             $adapter = new SymfonyConsoleQuestionHelperAdapter(new QuestionHelper(), $this->input, $this->output);
 
@@ -274,7 +226,7 @@ final class TemplatingBuilder
     {
         $writer = $this->writer ?? DefaultWriter::createWithLocalFilesystem($this->writerBasePath, $this->dryMode, $this->allowOverride);
 
-        if ($this->output) {
+        if (isset($this->output)) {
             $writer = new SymfonyConsoleOutputWriterDecorator($writer, $this->output);
         }
 
@@ -313,12 +265,12 @@ final class TemplatingBuilder
 
     private function validate(): void
     {
-        if (!$this->writer) {
-            if (!$this->writerBasePath) {
+        if (!isset($this->writer)) {
+            if (!isset($this->writerBasePath) || !$this->writerBasePath) {
                 throw new InvalidArgumentException('Writer base path is expected');
             }
 
-            if (!$this->templatesPath) {
+            if (!isset($this->templatesPath) || !$this->templatesPath) {
                 throw new InvalidArgumentException('Templates path is expected');
             }
         }

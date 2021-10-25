@@ -9,23 +9,13 @@ use Symfony\Component\Validator\Constraints\NotNull;
 
 final class RequiredInputParameterDefinition implements InputParameterDefinition
 {
-    /**
-     * @var string
-     */
-    private $key;
-    /**
-     * @var string
-     */
-    private $description;
-    /**
-     * @var Constraints
-     */
-    private $constraints;
+    private Constraints $constraints;
 
-    public function __construct(string $key, string $description, Constraint ...$constraints)
-    {
-        $this->key = $key;
-        $this->description = $description;
+    public function __construct(
+        private string $key,
+        private string $description,
+        Constraint ...$constraints
+    ) {
         $this->constraints = new Constraints(new NotBlank(), new NotNull(), ...$constraints);
     }
 

@@ -5,25 +5,10 @@ namespace Rewsam\SimpleBoilerplating\TemplateDefinition;
 
 final class TemplateDefinition
 {
-    /**
-     * @var string
-     */
-    private $sourcePath;
-    /**
-     * @var string
-     */
-    private $destinationPath;
-    /**
-     * @var string
-     */
-    private $mode;
-
-    public function __construct(string $sourcePath, string $destinationPath, string $mode)
-    {
-        $this->sourcePath = $sourcePath;
-        $this->destinationPath = $destinationPath;
-        $this->mode = $mode;
-    }
+    public function __construct(
+        private string $sourcePath,
+        private string $destinationPath, private string $mode
+    ) {}
 
     public function getSourcePath(): string
     {

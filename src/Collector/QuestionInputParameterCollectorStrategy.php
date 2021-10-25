@@ -5,26 +5,14 @@ namespace Rewsam\SimpleBoilerplating\Collector;
 
 use Rewsam\SimpleBoilerplating\Input\InputParameterDefinition;
 use RuntimeException;
-use Symfony\Component\Console\Helper\QuestionHelper;
 use Symfony\Component\Console\Question\Question;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 final class QuestionInputParameterCollectorStrategy implements InputParameterCollectorStrategy
 {
-    /**
-     * @var QuestionHelper
-     */
-    private $questionHelper;
-    /**
-     * @var ValidatorInterface
-     */
-    private $validation;
-
-    public function __construct(QuestionHelperAdapter $questionHelper, SimpleValidatorAdapter $validation)
-    {
-        $this->validation = $validation;
-        $this->questionHelper = $questionHelper;
-    }
+    public function __construct(
+        private QuestionHelperAdapter $questionHelper,
+        private SimpleValidatorAdapter $validation
+    ) {}
 
     public function fetch(InputParameterDefinition $definition): string
     {

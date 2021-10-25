@@ -21,10 +21,10 @@
     }
   },
   "require": {
-    "php": "^7.3.0",
+    "php": "^8.0.0",
     "mustache/mustache": "^2.13",
-    "symfony/validator": "^3.4 | ^4.4",
-    "symfony/console": " ^3.4 | ^4.4 | ^5.4",
+    "symfony/validator": "^5.3",
+    "symfony/console": "^5.3",
     "league/flysystem": "^2.3"
   },
   "require-dev": {

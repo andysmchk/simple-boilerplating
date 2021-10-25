@@ -7,14 +7,8 @@ use Rewsam\SimpleBoilerplating\Template\PathPrefixer;
 
 final class BasePathTemplateDefinitionFactory implements TemplateDefinitionFactory
 {
-    /**
-     * @var string
-     */
-    private $baseSourcePath;
-    /**
-     * @var string
-     */
-    private $baseDestinationPath;
+    private PathPrefixer $baseSourcePath;
+    private PathPrefixer $baseDestinationPath;
 
     public function __construct(string $baseSourcePath = '', string $baseDestinationPath = '')
     {

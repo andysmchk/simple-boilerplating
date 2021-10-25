@@ -8,20 +8,10 @@ use Rewsam\SimpleBoilerplating\TemplateDefinition\TemplateDefinitions;
 
 final class FromDefinitionsTemplateBuilder implements TemplateBuilder
 {
-    /**
-     * @var TemplateFactory
-     */
-    private $factory;
-    /**
-     * @var TemplateDefinitions
-     */
-    private $definitions;
-
-    public function __construct(TemplateFactory $factory, TemplateDefinitions $definitions)
-    {
-        $this->factory = $factory;
-        $this->definitions = $definitions;
-    }
+    public function __construct(
+        private TemplateFactory $factory,
+        private TemplateDefinitions $definitions
+    ) {}
 
     public function build(ParametersBag $bag): Template
     {

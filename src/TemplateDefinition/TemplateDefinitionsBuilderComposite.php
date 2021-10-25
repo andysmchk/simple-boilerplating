@@ -8,7 +8,7 @@ final class TemplateDefinitionsBuilderComposite implements TemplateDefinitionsBu
     /**
      * @var TemplateDefinitionsBuilder[]
      */
-    private $builders = [];
+    private array $builders = [];
 
     public function addBuilder(TemplateDefinitionsBuilder $builder): void
     {

@@ -8,20 +8,10 @@ use Rewsam\SimpleBoilerplating\ParameterBag\ParametersBags;
 
 final class ReactorInputParameterCollectorDecorator implements InputParameterCollector
 {
-    /**
-     * @var InputParameterCollector
-     */
-    private $collector;
-    /**
-     * @var InputReactor
-     */
-    private $reactor;
-
-    public function __construct(InputParameterCollector $collector, InputReactor $reactor)
-    {
-        $this->collector = $collector;
-        $this->reactor = $reactor;
-    }
+    public function __construct(
+        private InputParameterCollector $collector,
+        private InputReactor $reactor
+    ) {}
 
     public function collect(): ParametersBags
     {

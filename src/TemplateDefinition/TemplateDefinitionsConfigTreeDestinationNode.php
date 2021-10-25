@@ -5,14 +5,10 @@ namespace Rewsam\SimpleBoilerplating\TemplateDefinition;
 
 final class TemplateDefinitionsConfigTreeDestinationNode
 {
-    /** @var string  */
-    private $destinationBasePath;
-
-    /** @var string  */
-    private $sourceBasePath;
-
-    /** @var array  */
-    private $filesConfig = [];
+    private string $destinationBasePath;
+    private string $sourceBasePath;
+    /** @var array[] */
+    private array $filesConfig = [];
 
     public function __construct(array $config)
     {

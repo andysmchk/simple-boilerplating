@@ -5,25 +5,11 @@ namespace Rewsam\SimpleBoilerplating\Writer;
 
 final class DefaultWriter implements Writer
 {
-    /**
-     * @var WriterAdapter
-     */
-    private $filesystem;
-    /**
-     * @var bool
-     */
-    private $dry;
-    /**
-     * @var bool
-     */
-    private $override;
-
-    public function __construct(WriterAdapter $filesystem, bool $dry, bool $override)
-    {
-        $this->filesystem = $filesystem;
-        $this->dry = $dry;
-        $this->override = $override;
-    }
+    public function __construct(
+        private WriterAdapter $filesystem,
+        private bool $dry,
+        private bool $override
+    ) {}
 
     public static function createWithLocalFilesystem(string $basePath, bool $dry, bool $override): self
     {

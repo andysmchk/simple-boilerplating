@@ -7,7 +7,7 @@ use Rewsam\SimpleBoilerplating\Collection\GenericImmutableCollection;
 use Symfony\Component\Validator\Constraint;
 
 /**
- * @extends GenericImmutableCollection
+ * @extends GenericImmutableCollection<Constraint>
  */
 final class Constraints extends GenericImmutableCollection
 {
