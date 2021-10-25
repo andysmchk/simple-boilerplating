@@ -7,7 +7,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\Question;
 
-class SymfonyConsoleQuestionHelperAdapter implements QuestionHelperAdapter
+final class SymfonyConsoleQuestionHelperAdapter implements QuestionHelperAdapter
 {
     /**
      * @var InputInterface

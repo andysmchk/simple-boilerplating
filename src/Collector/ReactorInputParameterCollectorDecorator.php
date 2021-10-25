@@ -5,7 +5,7 @@ namespace Rewsam\SimpleBoilerplating\Collector;
 use Rewsam\SimpleBoilerplating\Input\InputReactor;
 use Rewsam\SimpleBoilerplating\ParameterBag\ParametersBags;
 
-class ReactorInputParameterCollectorDecorator implements InputParameterCollector
+final class ReactorInputParameterCollectorDecorator implements InputParameterCollector
 {
     /**
      * @var InputParameterCollector

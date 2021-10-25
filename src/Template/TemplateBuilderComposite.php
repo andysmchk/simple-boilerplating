@@ -4,7 +4,7 @@ namespace Rewsam\SimpleBoilerplating\Template;
 
 use Rewsam\SimpleBoilerplating\ParameterBag\ParametersBag;
 
-class TemplateBuilderComposite implements TemplateBuilder
+final class TemplateBuilderComposite implements TemplateBuilder
 {
     /** @var TemplateBuilder[]  */
     private $builders = [];

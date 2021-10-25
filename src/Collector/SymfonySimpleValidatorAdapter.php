@@ -5,7 +5,7 @@ namespace Rewsam\SimpleBoilerplating\Collector;
 use Rewsam\SimpleBoilerplating\Input\Constraints;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
-class SymfonySimpleValidatorAdapter implements SimpleValidatorAdapter
+final class SymfonySimpleValidatorAdapter implements SimpleValidatorAdapter
 {
     /**
      * @var ValidatorInterface

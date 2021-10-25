@@ -2,7 +2,7 @@
 
 namespace Rewsam\SimpleBoilerplating\Writer;
 
-class DefaultWriter implements Writer
+final class DefaultWriter implements Writer
 {
     /**
      * @var WriterAdapter

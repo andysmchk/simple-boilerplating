@@ -4,7 +4,7 @@ namespace Rewsam\SimpleBoilerplating\Input;
 
 use Symfony\Component\Validator\Constraint;
 
-class DefaultInputParameterDefinition implements InputParameterDefinition
+final class DefaultInputParameterDefinition implements InputParameterDefinition
 {
     /**
      * @var string

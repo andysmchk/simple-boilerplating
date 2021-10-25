@@ -19,9 +19,9 @@ class TemplateDefinitionsTest extends TestCase
         $sut = new TemplateDefinitions();
 
         $values = [
-            $this->prophesize(TemplateDefinition::class)->reveal(),
-            $this->prophesize(TemplateDefinition::class)->reveal(),
-            $this->prophesize(TemplateDefinition::class)->reveal(),
+            new TemplateDefinition('as78daf', 'sad3', 'ad644545'),
+            new TemplateDefinition('as3daf', 'sad83', 'ad4545'),
+            new TemplateDefinition('as4daf', 'sad43', 'ad455645'),
         ];
 
         $sut->add(...$values);
@@ -33,9 +33,9 @@ class TemplateDefinitionsTest extends TestCase
         $sut = new TemplateDefinitions();
 
         $values = [
-            $this->prophesize(TemplateDefinition::class)->reveal(),
-            $this->prophesize(TemplateDefinition::class)->reveal(),
-            $this->prophesize(TemplateDefinition::class)->reveal(),
+            new TemplateDefinition('as3daf', 's5ad3', 'ad42545'),
+            new TemplateDefinition('asd435af', '45sad3', 'ad44545'),
+            new TemplateDefinition('as5daf', '5sad3', 'ad45545'),
         ];
 
         $sut->add(...$values);

@@ -47,7 +47,7 @@ class FromDefinitionsBuilderTemplateBuilderTest extends TestCase
     public function testBuild(): void
     {
         $parameterBag = $this->prophesize(ParametersBag::class)->reveal();
-        $definitionsCollection = new class() extends TemplateDefinitions {};
+        $definitionsCollection = new TemplateDefinitions();
         $this->definitions->build()->willReturn($definitionsCollection)->shouldBeCalledOnce();
         $sut = new FromDefinitionsBuilderTemplateBuilder($this->factory->reveal(), $this->definitions->reveal());
         $template = $sut->build($parameterBag);

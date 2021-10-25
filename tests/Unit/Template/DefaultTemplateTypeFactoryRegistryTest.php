@@ -6,14 +6,13 @@ use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 use Rewsam\SimpleBoilerplating\Template\AppendTemplate;
 use Rewsam\SimpleBoilerplating\Template\DumpTemplate;
-use Rewsam\SimpleBoilerplating\Template\Template;
 use Rewsam\SimpleBoilerplating\Template\TemplateTypeFactory;
-use Rewsam\SimpleBoilerplating\Template\TemplateTypeFactoryRegistry;
+use Rewsam\SimpleBoilerplating\Template\DefaultTemplateTypeFactoryRegistry;
 
 /**
- * @covers \Rewsam\SimpleBoilerplating\Template\TemplateTypeFactoryRegistry
+ * @covers \Rewsam\SimpleBoilerplating\Template\DefaultTemplateTypeFactoryRegistry
  */
-class TemplateTypeFactoryRegistryTest extends TestCase
+class DefaultTemplateTypeFactoryRegistryTest extends TestCase
 {
     use ProphecyTrait;
 
@@ -22,7 +21,7 @@ class TemplateTypeFactoryRegistryTest extends TestCase
      */
     public function testGet(string $type, string $class): void
     {
-        $sut = new TemplateTypeFactoryRegistry();
+        $sut = new DefaultTemplateTypeFactoryRegistry();
 
         $factory = $sut->get($type);
         $template = $factory->create('test', 'txt');
@@ -34,13 +33,13 @@ class TemplateTypeFactoryRegistryTest extends TestCase
     public function testGetInvalid(): void
     {
         $this->expectException(\InvalidArgumentException::class);
-        $sut = new TemplateTypeFactoryRegistry();
+        $sut = new DefaultTemplateTypeFactoryRegistry();
         $sut->get('test');
     }
 
     public function testRegister(): void
     {
-        $sut = new TemplateTypeFactoryRegistry();
+        $sut = new DefaultTemplateTypeFactoryRegistry();
         $typeFactory = $this->prophesize(TemplateTypeFactory::class)->reveal();
 
         $sut->register('test', $typeFactory);

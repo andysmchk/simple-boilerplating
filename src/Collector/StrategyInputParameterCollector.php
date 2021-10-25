@@ -6,7 +6,7 @@ use Rewsam\SimpleBoilerplating\Input\InputParameterDefinitions;
 use Rewsam\SimpleBoilerplating\Input\Inputs;
 use Rewsam\SimpleBoilerplating\ParameterBag\ParametersBags;
 
-class StrategyInputParameterCollector implements InputParameterCollector
+final class StrategyInputParameterCollector implements InputParameterCollector
 {
     /**
      * @var InputParameterCollectorStrategy

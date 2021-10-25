@@ -5,7 +5,7 @@ namespace Rewsam\SimpleBoilerplating;
 use Rewsam\SimpleBoilerplating\Collector\InputParameterCollector;
 use Rewsam\SimpleBoilerplating\Template\TemplateBuilder;
 
-class Templating
+final class Templating
 {
     /**
      * @var InputParameterCollector

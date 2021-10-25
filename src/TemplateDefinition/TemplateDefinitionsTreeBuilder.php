@@ -2,7 +2,7 @@
 
 namespace Rewsam\SimpleBoilerplating\TemplateDefinition;
 
-class TemplateDefinitionsTreeBuilder implements TemplateDefinitionsBuilder
+final class TemplateDefinitionsTreeBuilder implements TemplateDefinitionsBuilder
 {
     /**
      * @var array

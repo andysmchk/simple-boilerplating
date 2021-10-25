@@ -7,7 +7,7 @@ use Rewsam\SimpleBoilerplating\Collection\GenericCollection;
 /**
  * @extends GenericCollection<TemplateDefinition>
  */
-class TemplateDefinitions extends GenericCollection
+final class TemplateDefinitions extends GenericCollection
 {
     public function add(TemplateDefinition ...$template): void
     {

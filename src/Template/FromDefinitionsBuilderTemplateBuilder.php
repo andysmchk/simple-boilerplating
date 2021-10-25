@@ -5,7 +5,7 @@ namespace Rewsam\SimpleBoilerplating\Template;
 use Rewsam\SimpleBoilerplating\ParameterBag\ParametersBag;
 use Rewsam\SimpleBoilerplating\TemplateDefinition\TemplateDefinitionsBuilder;
 
-class FromDefinitionsBuilderTemplateBuilder implements TemplateBuilder
+final class FromDefinitionsBuilderTemplateBuilder implements TemplateBuilder
 {
     /**
      * @var TemplateFactory

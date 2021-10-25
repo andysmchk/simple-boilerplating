@@ -2,7 +2,7 @@
 
 namespace Rewsam\SimpleBoilerplating\TemplateDefinition;
 
-class TemplateDefinitionsBuilderComposite implements TemplateDefinitionsBuilder
+final class TemplateDefinitionsBuilderComposite implements TemplateDefinitionsBuilder
 {
     /**
      * @var TemplateDefinitionsBuilder[]

@@ -20,7 +20,7 @@ class TemplateDefinitionsBuilderCompositeTest extends TestCase
         $sut = new TemplateDefinitionsBuilderComposite();
 
         $builder = $this->prophesize(TemplateDefinitionsBuilder::class);
-        $definitions = $this->prophesize(TemplateDefinitions::class);
+        $definitions = new TemplateDefinitions();
         $builder->build()->shouldBeCalled()->willReturn($definitions);
         $sut->addBuilder($builder->reveal());
         $definitions = $sut->build();

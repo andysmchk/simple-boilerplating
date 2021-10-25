@@ -2,7 +2,7 @@
 
 namespace Rewsam\SimpleBoilerplating\TemplateDefinition;
 
-class TemplateDefinition
+final class TemplateDefinition
 {
     /**
      * @var string

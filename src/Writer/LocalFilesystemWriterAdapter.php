@@ -6,7 +6,7 @@ use League\Flysystem\Filesystem;
 use League\Flysystem\FilesystemException;
 use League\Flysystem\Local\LocalFilesystemAdapter;
 
-class LocalFilesystemWriterAdapter implements WriterAdapter
+final class LocalFilesystemWriterAdapter implements WriterAdapter
 {
     /**
      * @var Filesystem

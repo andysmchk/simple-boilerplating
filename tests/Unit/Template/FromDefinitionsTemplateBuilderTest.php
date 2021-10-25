@@ -27,21 +27,16 @@ class FromDefinitionsTemplateBuilderTest extends TestCase
 
         $parameterBag = $this->prophesize(ParametersBag::class)->reveal();
 
-        $definition = $this->prophesize(TemplateDefinition::class)->reveal();
+        $definition = new TemplateDefinition('src', 'dsr', 'mode');
         $template = $this->prophesize(Template::class);
         //$writer = $this->prophesize(Writer::class)->reveal();
         //$template->write($writer)->shouldBeCalledOnce();
         $factory->create($definition, $parameterBag)
             ->shouldBeCalled()
             ->willReturn($template->reveal());
-        $definitionsArray[] = $definition;
 
-        $definitions = new class($definitionsArray) extends TemplateDefinitions {
-            public function __construct(array $definitionsArray)
-            {
-                $this->merge($definitionsArray);
-            }
-        };
+        $definitions = new TemplateDefinitions();
+        $definitions->add($definition);
 
         $sut = new FromDefinitionsTemplateBuilder($factory->reveal(), $definitions);
         $template = $sut->build($parameterBag);

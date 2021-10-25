@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraint;
 /**
  * @extends GenericImmutableCollection
  */
-class Constraints extends GenericImmutableCollection
+final class Constraints extends GenericImmutableCollection
 {
     public function __construct(Constraint ...$constraint)
     {

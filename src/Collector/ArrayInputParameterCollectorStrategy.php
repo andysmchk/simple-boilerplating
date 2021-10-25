@@ -4,7 +4,7 @@ namespace Rewsam\SimpleBoilerplating\Collector;
 
 use Rewsam\SimpleBoilerplating\Input\InputParameterDefinition;
 
-class ArrayInputParameterCollectorStrategy implements InputParameterCollectorStrategy
+final class ArrayInputParameterCollectorStrategy implements InputParameterCollectorStrategy
 {
     /**
      * @var array

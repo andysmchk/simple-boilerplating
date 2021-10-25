@@ -4,7 +4,7 @@ namespace Rewsam\SimpleBoilerplating\ParameterBag;
 
 use Rewsam\SimpleBoilerplating\Collection\GenericCollection;
 
-class ParametersBags extends GenericCollection
+final class ParametersBags extends GenericCollection
 {
     public function add(ParametersBag ...$bag): void
     {

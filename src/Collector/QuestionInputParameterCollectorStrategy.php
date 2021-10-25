@@ -7,7 +7,7 @@ use Symfony\Component\Console\Helper\QuestionHelper;
 use Symfony\Component\Console\Question\Question;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
-class QuestionInputParameterCollectorStrategy implements InputParameterCollectorStrategy
+final class QuestionInputParameterCollectorStrategy implements InputParameterCollectorStrategy
 {
     /**
      * @var QuestionHelper

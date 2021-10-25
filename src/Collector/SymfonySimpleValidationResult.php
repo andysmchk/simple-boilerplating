@@ -4,7 +4,7 @@ namespace Rewsam\SimpleBoilerplating\Collector;
 
 use Symfony\Component\Validator\ConstraintViolationListInterface;
 
-class SymfonySimpleValidationResult implements SimpleValidationResult
+final class SymfonySimpleValidationResult implements SimpleValidationResult
 {
     /**
      * @var ConstraintViolationListInterface

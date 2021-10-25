@@ -83,7 +83,7 @@ class TemplatingBuilderTest extends TestCase
 
     public function testAddTemplateDefinitions(): void
     {
-        self::assertSame($this->sut, $this->sut->addTemplateDefinitions($this->prophesize(TemplateDefinitions::class)->reveal()));
+        self::assertSame($this->sut, $this->sut->addTemplateDefinitions(new TemplateDefinitions()));
 
     }
 

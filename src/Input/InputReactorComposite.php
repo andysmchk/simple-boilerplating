@@ -4,7 +4,7 @@ namespace Rewsam\SimpleBoilerplating\Input;
 
 use Rewsam\SimpleBoilerplating\ParameterBag\ParametersBag;
 
-class InputReactorComposite implements InputReactor
+final class InputReactorComposite implements InputReactor
 {
     /** @var InputReactor[]  */
     private $reactors = [];

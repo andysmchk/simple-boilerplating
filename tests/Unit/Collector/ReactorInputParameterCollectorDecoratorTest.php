@@ -42,13 +42,8 @@ class ReactorInputParameterCollectorDecoratorTest extends TestCase
     public function testCollect(): void
     {
         $bag = $this->prophesize(ParametersBag::class)->reveal();
-        $bags = new class([$bag]) extends ParametersBags {
-            public function __construct($bags)
-            {
-                $this->merge($bags);
-            }
-        };
-
+        $bags = new ParametersBags();
+        $bags->add($bag);
         $this->collector->collect()->willReturn($bags);
         $this->reactor->supports($bag)->willReturn(true)->shouldBeCalledOnce();
         $this->reactor->react($bag)->shouldBeCalledOnce();

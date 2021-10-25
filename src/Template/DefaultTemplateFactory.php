@@ -6,7 +6,7 @@ use Rewsam\SimpleBoilerplating\ParameterBag\ParametersBag;
 use Rewsam\SimpleBoilerplating\Render\RenderAdapter;
 use Rewsam\SimpleBoilerplating\TemplateDefinition\TemplateDefinition;
 
-class DefaultTemplateFactory implements TemplateFactory
+final class DefaultTemplateFactory implements TemplateFactory
 {
     /**
      * @var RenderAdapter

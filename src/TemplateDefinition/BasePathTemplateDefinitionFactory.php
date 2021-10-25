@@ -4,7 +4,7 @@ namespace Rewsam\SimpleBoilerplating\TemplateDefinition;
 
 use Rewsam\SimpleBoilerplating\Template\PathPrefixer;
 
-class BasePathTemplateDefinitionFactory implements TemplateDefinitionFactory
+final class BasePathTemplateDefinitionFactory implements TemplateDefinitionFactory
 {
     /**
      * @var string

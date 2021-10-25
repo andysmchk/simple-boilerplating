@@ -19,6 +19,7 @@ use Rewsam\SimpleBoilerplating\Input\Inputs;
 use Rewsam\SimpleBoilerplating\Render\MustacheRenderAdapter;
 use Rewsam\SimpleBoilerplating\Render\RenderAdapter;
 use Rewsam\SimpleBoilerplating\Template\DefaultTemplateFactory;
+use Rewsam\SimpleBoilerplating\Template\DefaultTemplateTypeFactoryRegistry;
 use Rewsam\SimpleBoilerplating\Template\FromDefinitionsBuilderTemplateBuilder;
 use Rewsam\SimpleBoilerplating\Template\FromDefinitionsTemplateBuilder;
 use Rewsam\SimpleBoilerplating\Template\TemplateBuilder;
@@ -36,7 +37,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Validator\Validation;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
-class TemplatingBuilder
+final class TemplatingBuilder
 {
     /**
      * @var ValidatorInterface
@@ -281,7 +282,7 @@ class TemplatingBuilder
 
     private function getTemplateTypeFactoryRegistry(): TemplateTypeFactoryRegistry
     {
-        return $this->templateTypeFactoryRegistry ?? new TemplateTypeFactoryRegistry();
+        return $this->templateTypeFactoryRegistry ?? new DefaultTemplateTypeFactoryRegistry();
     }
 
     private function getDriver(): RenderAdapter
