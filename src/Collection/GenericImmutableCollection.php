@@ -1,13 +1,16 @@
 <?php
+declare(strict_types=1);
 
 namespace Rewsam\SimpleBoilerplating\Collection;
 
+use ArrayIterator;
 use Iterator;
+use IteratorAggregate;
 
 /**
  * @template T
  */
-abstract class GenericImmutableCollection implements Collection
+abstract class GenericImmutableCollection implements IteratorAggregate
 {
     /** @var T[] */
     private $values = [];
@@ -25,8 +28,8 @@ abstract class GenericImmutableCollection implements Collection
     }
 
     /** @return Iterator|T[] */
-    final public function getIterator(): Iterator
+    final public function getIterator()
     {
-        return new \ArrayIterator($this->values);
+        return new ArrayIterator($this->values);
     }
 }

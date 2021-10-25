@@ -1,8 +1,8 @@
 <?php
+declare(strict_types=1);
 
 namespace Rewsam\SimpleBoilerplating\Collector;
 
-use Rewsam\SimpleBoilerplating\Input\Inputs;
 use Rewsam\SimpleBoilerplating\ParameterBag\ParametersBags;
 
 /**

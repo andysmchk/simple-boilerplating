@@ -1,6 +1,9 @@
 <?php
+declare(strict_types=1);
 
 namespace Rewsam\SimpleBoilerplating\TemplateDefinition;
+
+use InvalidArgumentException;
 
 final class TemplateDefinitionsConfigTreeFileNode
 {
@@ -20,15 +23,15 @@ final class TemplateDefinitionsConfigTreeFileNode
         $this->mode = $config['mode'] ?? null;
 
         if (!$this->destination) {
-            throw new \InvalidArgumentException('Destination file path is required');
+            throw new InvalidArgumentException('Destination file path is required');
         }
 
         if (!$this->source) {
-            throw new \InvalidArgumentException('Source file path is required');
+            throw new InvalidArgumentException('Source file path is required');
         }
 
         if (!$this->mode) {
-            throw new \InvalidArgumentException('Template mode is required');
+            throw new InvalidArgumentException('Template mode is required');
         }
     }
 

@@ -1,8 +1,10 @@
 <?php
+declare(strict_types=1);
 
 namespace Rewsam\SimpleBoilerplating\Collector;
 
 use Rewsam\SimpleBoilerplating\Input\InputParameterDefinition;
+use RuntimeException;
 use Symfony\Component\Console\Helper\QuestionHelper;
 use Symfony\Component\Console\Question\Question;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
@@ -31,7 +33,7 @@ final class QuestionInputParameterCollectorStrategy implements InputParameterCol
             $violations = $this->validation->validate($value, $definition->getConstraints());
 
             if ($error = $violations->getMultilineMessage()) {
-                throw new \RuntimeException($error);
+                throw new RuntimeException($error);
             }
 
             return $value;
