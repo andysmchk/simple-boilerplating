@@ -4,9 +4,9 @@ Installation
 ============
 
 
-KnpMenu uses Composer, please checkout the [composer website](http://getcomposer.org) for more information.
+simple Boilerplating  uses Composer, please checkout the [composer website](http://getcomposer.org) for more information.
 
-The simple following command will install `knp-menu` into your project. It also add a new
+The simple following command will install `simple-boilerplating` into your project. It also adds a new
 entry in your `composer.json` and update the `composer.lock` as well.
 
 ```bash
